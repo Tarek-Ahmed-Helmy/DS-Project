@@ -22,6 +22,9 @@ public class Main {
         }
         System.out.println(".............");
     }
+    public static void solveError(){
+
+    }
 
     public static boolean consistency(BufferedReader br) throws IOException {
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), closing_tag= Pattern.compile("</(\\w+)>");
@@ -61,17 +64,14 @@ public class Main {
             }
             if(matcher_closing_tag.find()) {
                 if (!(stack.peek().content.equals(matcher_closing_tag.group(1)))) {
-                    System.out.println("error in line: " + stack.peek().lineNumber);
+                    System.out.println("error in line: " + lineNumber);
+                    System.out.println("Missing closing tag </"+stack.peek().content+">" );
+                    stack.pop();
+                    continue;
                 }
-                //printStack(stack);
-                stack.pop();
-                //System.out.println(stack.peek().content);
-                //if(stack.peek().content.equals(matcher_closing_tag.group(1))) stack.pop();
 
-                /*while (!(stack.peek().content.equals(matcher_closing_tag.group(1)))){
-                    System.out.println("error in line: " + stack.peek().lineNumber);
-                }*/
-                //stack.pop();
+                stack.pop();
+
             }
             line=br.readLine();
             lineNumber++;
@@ -79,7 +79,7 @@ public class Main {
     }
 
     public static void main(String []args)throws Exception{
-        FileReader fr=new FileReader("D:\\edu\\CSE331, Data Structures and Algorithms\\project\\sample-input.xml");
+        FileReader fr=new FileReader("H:\\Data Structure Project CLone\\DS-Project\\sample-input.xml");
         BufferedReader br=new BufferedReader(fr);
         Main x = new Main();
         //if(consistency(br)) System.out.println("100%");
