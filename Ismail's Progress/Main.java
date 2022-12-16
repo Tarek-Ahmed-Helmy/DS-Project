@@ -45,11 +45,15 @@ public class Main {
             }
             line=br.readLine();
         }
+        if(!stack.isEmpty()){
+          return false;
+        }
         return true;
     }
 
     public void showError(BufferedReader br) throws IOException {
         int lineNumber=1;
+        ET last;
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_closing_tag;
         Stack<ET> stack = new Stack<ET>();
@@ -77,14 +81,15 @@ public class Main {
                 }
             }
             else if(close) {
-                while(!(stack.peek().content.equals(matcher_closing_tag.group(1)))) {
+                while(!(stack.peek().content.equals(matcher_closing_tag.group(1))&&!stack.isEmpty())) {
                     System.out.println("error in line: " +stack.peek().lineNumber);
                     System.out.println("Missing closing tag </"+stack.peek().content+">" );
                     stack.pop();
 
                 }
 
-                stack.pop();
+                if(!stack.isEmpty())
+                    stack.pop();
 
 
             }
@@ -102,7 +107,7 @@ public class Main {
         BufferedReader br=new BufferedReader(fr);
         Main x = new Main();
         //if(consistency(br)) System.out.println("100%");
-        //else System.out.println("eldonia msh tmam");
+       // else System.out.println("eldonia msh tmam");
         x.showError(br);
     }
 }
