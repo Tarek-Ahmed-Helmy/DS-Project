@@ -1,4 +1,3 @@
-package xmlproj;
 import java.util.*;
 
 public class Tree {
