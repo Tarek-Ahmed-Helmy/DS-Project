@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 public class ErrorHandling {
     public static void solveError(BufferedReader br, BufferedWriter bw) throws IOException {
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), opening_tag_W= Pattern.compile("<(\\w+)>\\w+"), closing_tag= Pattern.compile("</(\\w+)>");

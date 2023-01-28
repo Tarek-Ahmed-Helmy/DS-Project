@@ -1,5 +1,4 @@
 import static java.util.Arrays.fill;
-
 public class Formatting {
     public static String GenerateTabs(int tabLevel) {
         char[] tabs = new char[tabLevel * 2];
