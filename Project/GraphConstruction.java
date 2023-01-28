@@ -105,13 +105,24 @@ public class GraphConstruction {
             List<GraphNode> suggestionsList = new ArrayList<GraphNode>();
             int freq [] = new int [graphNodeList.size()+1];
             for(int i=0;i<=graphNodeList.size();i++) freq[i]=0;
+            freq[Integer.valueOf(A.id)]=1;
+            
+            for (String follower:A.followersIds)
+            	freq[Integer.valueOf(follower.id)]=1;
+            
             for (String follower:A.followersIds){
-                
+                for(String followerA:follower.followersIds) {
+                	if(freq[Integer.valueOf(followerA.id)]==0)
+                	{
+                		suggestionsList.add(followerA);
+                		freq[Integer.valueOf(followerA.id)]=1;
+                	}
+                }
             }
             return suggestionsList;
         }
 
-
+        public static 
 
 
 /*
