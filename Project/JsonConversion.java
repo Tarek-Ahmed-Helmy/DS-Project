@@ -2,7 +2,7 @@ import java.io.*;
 public class JsonConversion {
 	
 	
-	public static void printJSON(Node node) 
+	public static void printJSON(Node node)
 	{
 		System.out.print("\t"+"\"" + node.getTag() + "\"" + ":");
 
