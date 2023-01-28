@@ -101,6 +101,15 @@ public class GraphConstruction {
             return mutualFollowers;
         }
 
+        public static List<GraphNode> suggestions(List<GraphNode> graphNodeList, GraphNode A){
+            List<GraphNode> suggestionsList = new ArrayList<GraphNode>();
+            int freq [] = new int [graphNodeList.size()+1];
+            for(int i=0;i<=graphNodeList.size();i++) freq[i]=0;
+            for (String follower:A.followersIds){
+                
+            }
+            return suggestionsList;
+        }
 
 
 
