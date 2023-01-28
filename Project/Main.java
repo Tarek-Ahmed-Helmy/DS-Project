@@ -4,14 +4,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String []args)throws Exception{
-        File file = new File("..\\sample-input.xml");
-        Reader fr1 = new FileReader(file);
+        FileReader fr1 = new FileReader("..\\sample-input.xml");
         BufferedReader br1 = new BufferedReader(fr1);
+        FileWriter fw1=new FileWriter("..\\new-sample-input.xml");
+        BufferedWriter bw1=new BufferedWriter(fw1);
+        ErrorHandling.solveError(br1, bw1);
+        bw1.close();
+        FileReader fr3 = new FileReader("..\\new-sample-input.xml");
+        BufferedReader br3 = new BufferedReader(fr3);
         StringBuilder sb = new StringBuilder();
-        String line = br1.readLine();
+        String line = br3.readLine();
         while(line !=null){
             sb.append(line).append("\n");
-            line = br1.readLine();
+            line = br3.readLine();
         }
         String xml2string = sb.toString();
         Tree xmlTree = new Tree();
@@ -38,20 +43,22 @@ public class Main {
                     ErrorHandling.showError(br2);
                     break;
                 case 3:
-                    FileWriter fw=new FileWriter("..\\new-sample-input.xml");
-                    BufferedWriter bw=new BufferedWriter(fw);
-                    ErrorHandling.solveError(br2, bw);
+                    FileWriter fw2=new FileWriter("..\\new-sample-input.xml");
+                    BufferedWriter bw2=new BufferedWriter(fw2);
+                    ErrorHandling.solveError(br2, bw2);
                     System.out.println("Errors Solved Successfully");
-                    bw.close();
+                    bw2.close();
                     break;
                 case 4:
-                    //formatting
+                    String formattedString = Formatting.FormatXML(xml2string);
+                    System.out.println(formattedString);
                     break;
                 case 5:
-                    //converting
+                    JsonConversion.printJSON(xmlTree.getRoot());
                     break;
                 case 6:
-                    //minifying
+                    String minifiedString = Formatting.Minify(xml2string);
+                    System.out.println(minifiedString);
                     break;
                 case 7:
                     //compressing
@@ -60,18 +67,33 @@ public class Main {
                     //decompressing
                     break;
                 case 9:
-                    //most influ.
+                    GraphNode mostInfluencer = GraphConstruction.mostInfluencer(constructedGraph, users);
+                    System.out.println(mostInfluencer.name + ": " + mostInfluencer.id);
                     break;
                 case 10:
-                    //mutual followers
+                    GraphNode user1 = new GraphNode();
+                    GraphNode user2 = new GraphNode();
+                    List<GraphNode> mutualFollowers = GraphConstruction.mutualFollowers(constructedGraph, users, user1, user2);
+                    for (GraphNode user:mutualFollowers){
+                        System.out.println(user.name + ": " + user.id);
+                    }
                     break;
                 case 11:
-                    //most active
+                    GraphNode mostActive = GraphConstruction.mostActive(constructedGraph, users);
+                    System.out.println(mostActive.name + ": " + mostActive.id);
                     break;
                 case 12:
-                    //suggestions
+                    GraphNode userx = new GraphNode();
+                    List<GraphNode> suggestionFollowers = GraphConstruction.suggestions(users, userx);
+                    for (GraphNode user:suggestionFollowers){
+                        System.out.println(user.name + ": " + user.id);
+                    }
+                    break;
                 case 13:
-                    //search
+                    String word;
+                    word = in.next();
+                    GraphConstruction.search(users,word);
+                    break;
                 default:
                     System.out.println("invalid entry");
                     break;
