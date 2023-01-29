@@ -146,22 +146,6 @@ public class Main {
     }
 
     public static void main(String []args)throws Exception{
-        FileWriter fw=new FileWriter("NewXml.xml");
-        BufferedWriter bw=new BufferedWriter(fw);
-        FileReader fr=new FileReader("H:\\note.xml");
-        BufferedReader br=new BufferedReader(fr);
-        FileReader fr1=new FileReader("H:\\note.xml");
-        BufferedReader br1=new BufferedReader(fr1);
-        Main x = new Main();
-        if(consistency(br)) System.out.println("100%");
-        else System.out.println("eldonia msh tmam");
-        x.showError(br1);
-        FileReader fr2=new FileReader("H:\\note.xml");
-        BufferedReader br2=new BufferedReader(fr2);
-        x.solveError(br2,bw);
-        bw.close();
-        br.close();
-        br2.close();
-        br1.close();
+       FileReader fr
     }
 }
