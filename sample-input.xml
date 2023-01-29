@@ -27,12 +27,9 @@
                 </topics>
             </post>
         </posts>
-        <followers>
+<followers>
             <follower>
-                <name>2</id>
-            </follower>
-            <follower>
-                <name>4</id>
+                <id>5</id>
             </follower>
         </followers>
     </user>
@@ -56,13 +53,7 @@
                 <id>1</id>
             </follower>
             <follower>
-                <id>3</id>
-            </follower>
-            <follower>
                 <id>4</id>
-            </follower>
-            <follower>
-                <id>6</id>
             </follower>
         </followers>
     </user>
@@ -107,10 +98,7 @@
         </posts>
         <followers>
             <follower>
-                <id>2</id>
-            </follower>
-            <follower>
-                <id>1</id>
+                <id>5</id>
             </follower>
         </followers>
     </user>
@@ -129,24 +117,7 @@
                 </topics>
             </post>
         </posts>
-        <followers>
-            <follower>
-                <id>2</id>
-            </follower>
-            <follower>
-                <id>1</id>
-            </follower>
-            <follower>
-                <id>3</id>
-            </follower>
-            <follower>
-                <id>4</id>
-            </follower>
-            <follower>
-                <id>6</id>
-            </follower>
-        </followers>
-    </user>
+           </user>
     <user>
         <id>6</id>
         <name>Youseef Hesham</name>
@@ -162,13 +133,5 @@
                 </topics>
             </post>
         </posts>
-        <followers>
-            <follower>
-                <id>2</id>
-            </follower>
-            <follower>
-                <id>3</id>
-            </follower>
-        </followers>
-    </user>
+            </user>
 </users>
