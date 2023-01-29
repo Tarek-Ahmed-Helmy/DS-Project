@@ -1,8 +1,10 @@
+import java.util.Objects;
+
 public class JsonConversion {
 	public static void printJSON(Node node){
 		System.out.print("\t"+"\"" + node.getTag() + "\"" + ":");
 
-		if (node.getData() == ""){
+		if (Objects.equals(node.getData(), "")){
 			System.out.print("[\n\t");
 			System.out.print("\t\t{\n\t");
 		}

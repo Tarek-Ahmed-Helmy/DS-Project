@@ -67,24 +67,24 @@ public class Main {
                     //decompressing
                     break;
                 case 9:
-                    GraphNode mostInfluencer = GraphConstruction.mostInfluencer(constructedGraph, users);
+                    GraphNode mostInfluencer = NetworkAnalysis.mostInfluencer(constructedGraph, users);
                     System.out.println(mostInfluencer.name + ": " + mostInfluencer.id);
                     break;
                 case 10:
-                    GraphNode user1 = new GraphNode();
-                    GraphNode user2 = new GraphNode();
-                    List<GraphNode> mutualFollowers = GraphConstruction.mutualFollowers(constructedGraph, users, user1, user2);
+                    int user1ID = in.nextInt();
+                    int user2ID = in.nextInt();
+                    List<GraphNode> mutualFollowers = NetworkAnalysis.mutualFollowers(constructedGraph, users, users.get(user1ID-1), users.get(user2ID-1));
                     for (GraphNode user:mutualFollowers){
                         System.out.println(user.name + ": " + user.id);
                     }
                     break;
                 case 11:
-                    GraphNode mostActive = GraphConstruction.mostActive(constructedGraph, users);
+                    GraphNode mostActive = NetworkAnalysis.mostActive(constructedGraph, users);
                     System.out.println(mostActive.name + ": " + mostActive.id);
                     break;
                 case 12:
-                    GraphNode userx = new GraphNode();
-                    List<GraphNode> suggestionFollowers = GraphConstruction.suggestions(users, userx);
+                    int user_ = in.nextInt();
+                    List<GraphNode> suggestionFollowers = NetworkAnalysis.suggestions(users, users.get(user_-1));
                     for (GraphNode user:suggestionFollowers){
                         System.out.println(user.name + ": " + user.id);
                     }

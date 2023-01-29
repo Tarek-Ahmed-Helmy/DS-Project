@@ -2,7 +2,7 @@ import java.util.*;
 public class Node{
 	private String tag;
     private String data;
-    private List<Node> children = new ArrayList<>();
+    private final List<Node> children = new ArrayList<>();
     public Node(String t, String d){
         this.tag = t;
         this.data =d;
