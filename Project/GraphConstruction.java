@@ -3,7 +3,7 @@ public class GraphConstruction{
     public static List<GraphNode> treeToUsersArray(Node users){
         // we have the root of the tree --> users
         // we should get the user user user
-        List<GraphNode> graphNodeList=new ArrayList<GraphNode>();
+        List<GraphNode> graphNodeList= new ArrayList<>();
         List<Node> usersList=users.getChildren();
         for(Node user:usersList){
             GraphNode simpleNode=new GraphNode();
@@ -39,9 +39,9 @@ public class GraphConstruction{
         int n = graphNodeList.size();
         Graph graph = new Graph(n);
         for (GraphNode user:graphNodeList){
-            int id = Integer.valueOf(user.id);
+            int id = Integer.parseInt(user.id);
             for (String follower:user.followersIds){
-                graph.addEdge(id,Integer.valueOf(follower));
+                graph.addEdge(Integer.parseInt(follower),id);
             }
         }
         return graph;
@@ -70,9 +70,9 @@ public class GraphConstruction{
     }
 
     public static List<GraphNode> mutualFollowers(Graph graph,List<GraphNode> graphNodeList, GraphNode A, GraphNode B){
-        List<GraphNode> mutualFollowers = new ArrayList<GraphNode>();
+        List<GraphNode> mutualFollowers = new ArrayList<>();
         for(int i=1;i<=graph.v;i++){
-            if ((graph.graph[Integer.valueOf(A.id)][i] + graph.graph[Integer.valueOf(B.id)][i])==2){
+            if ((graph.graph[i][Integer.parseInt(A.id)] + graph.graph[i][Integer.parseInt(B.id)])==2){
                 mutualFollowers.add(graphNodeList.get(i-1));
             }
         }
@@ -80,19 +80,19 @@ public class GraphConstruction{
     }
 
     public static List<GraphNode> suggestions(List<GraphNode> graphNodeList, GraphNode A){
-        List<GraphNode> suggestionsList = new ArrayList<GraphNode>();
-        int freq [] = new int [graphNodeList.size()+1];
+        List<GraphNode> suggestionsList = new ArrayList<>();
+        int[] freq = new int [graphNodeList.size()+1];
         for(int i=0;i<=graphNodeList.size();i++) freq[i]=0;
-        freq[Integer.valueOf(A.id)]=1;
+        freq[Integer.parseInt(A.id)]=1;
 
         for (String follower:A.followersIds)
-            freq[Integer.valueOf(follower)]=1;
+            freq[Integer.parseInt(follower)]=1;
 
         for (String follower:A.followersIds){
-            for(String followerA:graphNodeList.get(Integer.valueOf(follower)).followersIds){
-                if(freq[Integer.valueOf(followerA)]==0){
-                    suggestionsList.add(graphNodeList.get(Integer.valueOf(followerA)));
-                    freq[Integer.valueOf(followerA)]=1;
+            for(String followerA:graphNodeList.get(Integer.parseInt(follower)-1).followersIds){
+                if(freq[Integer.parseInt(followerA)]==0){
+                    suggestionsList.add(graphNodeList.get(Integer.parseInt(followerA)-1));
+                    freq[Integer.parseInt(followerA)]=1;
                 }
             }
         }

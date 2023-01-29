@@ -17,6 +17,7 @@ public class Tree{
 			String line1 = scanner.nextLine();
 			//line = reader.readLine();
 			String line =line1.trim();
+			if(line=="") continue;
 			// if tag
 			if(line.charAt(0) == '<'){
 				// empty strings
