@@ -9,7 +9,7 @@ public class Tree{
 	}
 	public void fillTree(String file){
 		String[] words;
-		Stack<Node> nodes = new Stack<Node>();
+		Stack<Node> nodes = new Stack<>();
 		Scanner scanner = new Scanner(file);
 		// while not at file end
 		while(scanner.hasNextLine()){
@@ -17,11 +17,11 @@ public class Tree{
 			String line1 = scanner.nextLine();
 			//line = reader.readLine();
 			String line =line1.trim();
-			if(line=="") continue;
+			if(line.equals("")) continue;
 			// if tag
 			if(line.charAt(0) == '<'){
 				// empty strings
-				String tag = "";
+				String tag;
 				String data = "";
 				//if opening tag
 				if(line.charAt(1) != '/'){

@@ -57,7 +57,7 @@ public class ErrorHandling {
     public static boolean consistency(BufferedReader br) throws IOException {
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_closing_tag;
-        Stack<String> stack = new Stack<String>();
+        Stack<String> stack = new Stack<>();
         String line=br.readLine();
         while(line!=null){
             matcher_opening_tag=opening_tag.matcher(line);
@@ -74,17 +74,14 @@ public class ErrorHandling {
             }
             line=br.readLine();
         }
-        if(!stack.isEmpty()){
-            return false;
-        }
-        return true;
+        return stack.isEmpty();
     }
 
     public static void showError(BufferedReader br) throws IOException {
         int lineNumber=1;
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), opening_tag_W= Pattern.compile("<(\\w+)>\\w+"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_opening_tag_W, matcher_closing_tag;
-        Stack<TagError> stack = new Stack<TagError>();
+        Stack<TagError> stack = new Stack<>();
         String line=br.readLine();
         while(line!=null){
             matcher_opening_tag=opening_tag.matcher(line);
