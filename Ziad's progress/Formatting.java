@@ -55,18 +55,13 @@ public class Formatting {
     }
 
 
-    public static String Minify(String x)
+    public static String Minify(String xml)
     {
-        String regex = "[\\n\\s]+(\\<[^/])";
-        String updatedXml = x.replaceAll( regex, "$1" );
-
-
-        regex = "(\\</[a-zA-Z0-9-_\\.:]+\\>)[\\s]+";
-        updatedXml = updatedXml.replaceAll( regex, "$1" );
-
-        regex = "(/\\>)[\\s]+";
-        updatedXml = updatedXml.replaceAll( regex, "$1" );
-        return updatedXml;
+        xml = xml.replaceAll(">\\s+<", "><");
+        xml = xml.replaceAll("\n", "");
+        xml = xml.replaceAll("\r", "");
+        xml = xml.replaceAll("  ", "");
+        return xml.trim();
 
     }
 
