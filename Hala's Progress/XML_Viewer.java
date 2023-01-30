@@ -1,13 +1,16 @@
 package xmlproj;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
@@ -24,6 +27,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Reader;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
@@ -282,6 +286,53 @@ public class XML_Viewer extends JFrame {
 		});
 		
 		JButton SearchGraphbtn = new JButton("Search Graph");
+		SearchGraphbtn.addActionListener(new ActionListener() {
+			String word;
+			public void actionPerformed(ActionEvent e) {
+				
+				//SearchWindow window = new SearchWindow();
+			//	window.NewScreen();
+				JFrame frmSearchXml = new JFrame();
+				frmSearchXml.setTitle("Search XML");
+				frmSearchXml.setBounds(100, 100, 545, 186);
+				//frmSearchXml.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				
+				JTextField txtSearchBar = new JTextField();
+				txtSearchBar.setColumns(10);
+				
+				JLabel lblNewLabel = new JLabel("Enter word to be searched:");
+				lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+				frmSearchXml.add(txtSearchBar);
+				frmSearchXml.add(lblNewLabel);
+				
+				JButton btnNewButton = new JButton("Search");
+				frmSearchXml.add(btnNewButton);
+				/*btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+						
+						 word = txtSearchBar.getText();
+						 
+					}
+				});*/
+				frmSearchXml.setLayout(null);
+				frmSearchXml.setVisible(true);
+				Tree xmltree = new Tree();
+				xmltree.fillTree(xml2string);
+				List<GraphNode> users=GraphConstruction.treeToUsersArray(xmltree.getRoot());
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				PrintStream ps = new PrintStream(baos);
+				PrintStream old = System.out;
+				System.setOut(ps);
+				GraphConstruction.search(users,word);
+				System.out.flush();
+				System.setOut(old);
+				String searchOut = baos.toString();
+				textArea.setText(null);
+				textArea.insert(searchOut,0);
+				
+		        
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
