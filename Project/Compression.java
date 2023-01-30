@@ -1,29 +1,30 @@
 import java.io.*;
 import java.util.*;
 public class Compression {
-    public static ArrayList<String> tokens = new ArrayList<String>();
+    public static ArrayList<String> tokens = new ArrayList<>();
     public static String compress(BufferedReader br, BufferedWriter bw) throws IOException{
         String line = br.readLine();
-        StringBuffer XML = new StringBuffer(line);
+        StringBuilder XML = new StringBuilder();
         while(line != null){
             XML.append(line);
             XML.append("\n");
             line = br.readLine();
         }
         String s = XML.toString();
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         String replace;
         int index;
-        String[] chars = XML.toString().split("");
-        for(int i = 0; i<chars.length ; i++){
-            if(!tokens.contains(chars[i])){
-                tokens.add(chars[i]);
+        String[] chars = s.split("");
+        for (String aChar : chars) {
+            if (!tokens.contains(aChar)) {
+                tokens.add(aChar);
             }
         }
+
         int i = 0;
         int j;
         while( i < s.length()){
-            StringBuilder temp = new StringBuilder("");
+            StringBuilder temp = new StringBuilder();
             j = i;
             temp.append(s.charAt(j));
             j++;
@@ -55,25 +56,15 @@ public class Compression {
             line = br.readLine();
         }
         String s = sb.toString();
-        StringBuilder decomp = new StringBuilder(s);
-        StringBuilder test = new StringBuilder("");
-        String before_last = "";
-        StringBuilder result = new StringBuilder("");
-        for(int r = 0 ; r< s.length()-1 ; r++){
-            test.delete(0, test.length());
-            while(decomp.charAt(r) != ' '){
-                test.append(decomp.charAt(r));
+        StringBuilder current = new StringBuilder();
+        StringBuilder result = new StringBuilder();
+        for(int r=0; r< s.length()-1; r++){
+            current.delete(0, current.length());
+            while(s.charAt(r) != ' '){
+                current.append(s.charAt(r));
                 r++;
             }
-            if(Integer.parseInt(test.toString()) < tokens.size()){
-                result.append(tokens.get(Integer.parseInt(test.toString())));
-                if(r == 0) before_last = tokens.get(Integer.parseInt(test.toString()));
-                else{
-                    tokens.add(before_last + tokens.get(Integer.parseInt(test.toString())).charAt(0));
-                    before_last = tokens.get(Integer.parseInt(test.toString()));
-                }
-                System.out.println(result);
-            }
+            result.append(tokens.get(Integer.parseInt(current.toString())));
         }
         return result.toString();
     }
