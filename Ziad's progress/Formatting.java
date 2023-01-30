@@ -1,51 +1,57 @@
-import static java.util.Arrays.fill;
 
 public class Formatting {
-    public static String GenerateTabs(int tabLevel) {
-        char[] tabs = new char[tabLevel * 2];
-        fill(tabs, ' ');
-
-        return new String(tabs);
-    }
-
-    public static String FormatXML(String code) {
-
-        String[] splitLines = code.split("\\n", 0);
-
-        int tabLevel = 0;
-
-
-        for (int lineNum = 0; lineNum < splitLines.length; ++lineNum) {
-            String currentLine = splitLines[lineNum];
-
-            if (currentLine.trim().isEmpty()) {
-                splitLines[lineNum] = "";
-            } else if (currentLine.matches(".*<[^/!][^<>]+?(?<!/)>?")) {
-                splitLines[lineNum] = GenerateTabs(tabLevel) + splitLines[lineNum];
-
-                ++tabLevel;
-            } else if (currentLine.matches(".*</[^<>]+?>")) {
-                --tabLevel;
-
-                if (tabLevel < 0) {
-                    tabLevel = 0;
-                }
-
-                splitLines[lineNum] = GenerateTabs(tabLevel) + splitLines[lineNum];
-            } else if (currentLine.matches("[^<>]*?/>")) {
-                splitLines[lineNum] = GenerateTabs(tabLevel) + splitLines[lineNum];
-
-                --tabLevel;
-
-                if (tabLevel < 0) {
-                    tabLevel = 0;
-                }
-            } else {
-                splitLines[lineNum] = GenerateTabs(tabLevel) + splitLines[lineNum];
+    public static String formatXML(final String unformattedXML) {
+        final int length = unformattedXML.length();
+        int indentSpace= 5;
+        final StringBuilder newString = new StringBuilder(length + length / 10);
+        final char space = ' ';
+        int i = 0;
+        
+        int indentCount = 0;
+        char currentChar = unformattedXML.charAt(i++);
+        char previousChar = currentChar;
+        boolean nodeStarted = true;
+        newString.append(currentChar);
+        for (; i < length - 1;) {
+            currentChar = unformattedXML.charAt(i++);
+            if (((int) currentChar < 33) && !nodeStarted) {
+                continue;
             }
+            switch (currentChar) {
+                case '<':
+                    if ('>' == previousChar && '/' != unformattedXML.charAt(i - 1) && '/' != unformattedXML.charAt(i) && '!' != unformattedXML.charAt(i)) {
+                        indentCount++;
+                    }
+                    newString.append('\n');
+                    for (int j = indentCount * indentSpace; j > 0; j--) {
+                        newString.append(space);
+                    }
+                    newString.append(currentChar);
+                    nodeStarted = true;
+                    break;
+                case '>':
+                    newString.append(currentChar);
+                    nodeStarted = false;
+                    break;
+                case '/':
+                    if ('<' == previousChar || '>' == unformattedXML.charAt(i)) {
+                        indentCount--;
+                    }
+                    newString.append(currentChar);
+                    break;
+                default:
+                    if(Character.isSpaceChar(unformattedXML.charAt(i))){
+                        newString.append(currentChar);
+                        newString.append(" ");
+                    }else{
+                        newString.append(currentChar);
+                    }
+            }
+            previousChar = currentChar;
         }
 
-        return String.join("\n", splitLines);
+        newString.append(unformattedXML.charAt(length - 1));
+        return newString.toString();
     }
 
 
