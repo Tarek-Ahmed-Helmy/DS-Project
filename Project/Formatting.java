@@ -1,6 +1,6 @@
 
 
-public class Formatting {
+public class Formatting { // this class formats the xml file by adding spaces and right indentation
     public static String formatXML(final String unformattedXML) {
         final int length = unformattedXML.length();
         int indentSpace= 5;
@@ -59,7 +59,7 @@ public class Formatting {
 
 
 
-    public static String minify(String xml)
+    public static String minify(String xml)  // minify the xml file by removing the unnecessary spaces
     {
         xml = xml.replaceAll(">\\s+<", "><");
         xml = xml.replaceAll("\n", "");
