@@ -35,7 +35,7 @@ public class GraphConstruction{
         return graphNodeList;
     }
 
-    public static Graph construct(List<GraphNode> graphNodeList){
+    public static Graph construct(List<GraphNode> graphNodeList){ // using the graph node users list we create the graph using ids
         int n = graphNodeList.size();
         Graph graph = new Graph(n);
         for (GraphNode user:graphNodeList){
@@ -47,7 +47,7 @@ public class GraphConstruction{
         return graph;
     }
 
-    public static void search(List<GraphNode> graphNodeList, String word){
+    public static void search(List<GraphNode> graphNodeList, String word){ // search for a word by checking all posts and topics
         for(GraphNode user:graphNodeList){
             for (String topic:user.topics){
                 if(topic.contains(word)) System.out.println(topic);
