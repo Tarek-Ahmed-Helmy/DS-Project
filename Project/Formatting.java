@@ -23,9 +23,11 @@ public class Formatting {
                     if ('>' == previousChar && '/' != unformattedXML.charAt(i - 1) && '/' != unformattedXML.charAt(i) && '!' != unformattedXML.charAt(i)) {
                         indentCount++;
                     }
+                    if(!Character.isLetterOrDigit(unformattedXML.charAt(i-2)) ){
                     newString.append('\n');
                     for (int j = indentCount * indentSpace; j > 0; j--) {
                         newString.append(space);
+                    }
                     }
                     newString.append(currentChar);
                     nodeStarted = true;
