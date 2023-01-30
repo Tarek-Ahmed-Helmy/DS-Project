@@ -4,7 +4,13 @@ import java.io.IOException;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class ErrorHandling {
+
+// this class consists of 3 static methods one to solve the error, one to show the consistency and one to show the errors (if any)
+
+public class ErrorHandling {  
+
+    // solve the error by creating a pattern by regex and see if there is a match to it. if there was a match then go get that tag content and put it on a stack. 
+    // if you find the closing tag of it then pop from stack and all things are fine. if you find a mismatch then there is something wrong.
     public static void solveError(BufferedReader br, BufferedWriter bw) throws IOException {
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), opening_tag_W= Pattern.compile("<(\\w+)>\\w+"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_opening_tag_W, matcher_closing_tag;
@@ -16,16 +22,16 @@ public class ErrorHandling {
             matcher_closing_tag=closing_tag.matcher(line);
             boolean open=matcher_opening_tag.find(), open_W=matcher_opening_tag_W.find(), close=matcher_closing_tag.find();
             boolean checkIfNoErrors=true;
-            if(open){
+            if(open){ // you found an opening tag then push to stack the possible error.
                 TagError error = new TagError(matcher_opening_tag.group(1));
                 stack.push(error);
             }
-            if(open_W && !close){
+            if(open_W && !close){ // if there is an opening tag followed by some words like "<id>1 "and not a closing tag
                 bw.append(line).append("</").append(matcher_opening_tag.group(1)).append(">\n");
                 checkIfNoErrors=false;
                 stack.pop();
             }
-            else if(open && close){
+            else if(open && close){ // if there is an opening tag and a closing tag and thats the right match then pop from stack.
                 if(matcher_opening_tag.group(1).equals(matcher_closing_tag.group(1))){
                     stack.pop();
                 }
@@ -36,7 +42,7 @@ public class ErrorHandling {
                     stack.pop();
                 }
             }
-            else if(close) {
+            else if(close) { // if there is only a close tag like "</user>" 
                 while(!(stack.peek().content.equals(matcher_closing_tag.group(1))&&!stack.isEmpty())) {
                     bw.append("</").append(stack.peek().content).append(">\n");
                     stack.pop();
