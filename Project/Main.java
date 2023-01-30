@@ -61,10 +61,17 @@ public class Main {
                     System.out.println(minifiedString);
                     break;
                 case 7:
-                    //compressing
+                    FileWriter fw3=new FileWriter("..\\sample-input-compressed.xml");
+                    BufferedWriter bw3=new BufferedWriter(fw3);
+                    System.out.println(Compression.compress(br2,bw3));
+                    System.out.println("File Compressed Successfully");
                     break;
                 case 8:
-                    //decompressing
+                    FileReader fr4=new FileReader("..\\sample-input-compressed.xml");
+                    BufferedReader br4=new BufferedReader(fr4);
+                    FileWriter fw4=new FileWriter("..\\sample-input-compressed.xml");
+                    BufferedWriter bw4=new BufferedWriter(fw4);
+                    System.out.println(Compression.decompress(Compression.compress(br2,bw4)));
                     break;
                 case 9:
                     GraphNode mostInfluencer = NetworkAnalysis.mostInfluencer(constructedGraph, users);
