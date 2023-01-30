@@ -1,5 +1,5 @@
 import java.util.*;
-public class Node{
+public class Node{  // a node representing a tag with its data
 	private final String tag;
     private String data;
     private final List<Node> children = new ArrayList<>();
