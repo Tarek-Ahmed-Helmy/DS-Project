@@ -10,13 +10,13 @@ public class Main {
         BufferedWriter bw1=new BufferedWriter(fw1);
         ErrorHandling.solveError(br1, bw1);
         bw1.close();
-        FileReader fr3 = new FileReader("..\\new-sample-input.xml");
-        BufferedReader br3 = new BufferedReader(fr3);
+        FileReader fr2 = new FileReader("..\\new-sample-input.xml");
+        BufferedReader br2 = new BufferedReader(fr2);
         StringBuilder sb = new StringBuilder();
-        String line = br3.readLine();
+        String line = br2.readLine();
         while(line !=null){
             sb.append(line).append("\n");
-            line = br3.readLine();
+            line = br2.readLine();
         }
         String xml2string = sb.toString();
         Tree xmlTree = new Tree();
@@ -24,33 +24,33 @@ public class Main {
         List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
         Graph constructedGraph = GraphConstruction.construct(users);
         fr1.close();
-        br1.close();
-
-
+        fr2.close();
+        fw1.close();
         while (true){
-            FileReader fr2=new FileReader("..\\sample-input.xml");
-            BufferedReader br2=new BufferedReader(fr2);
+            FileReader fr3=new FileReader("..\\sample-input.xml");
+            BufferedReader br3=new BufferedReader(fr3);
             int op;
             Scanner in = new Scanner(System.in);
             System.out.println("Enter the operation number: ");
             op = in.nextInt();
             switch (op) {
                 case 1:
-                    if (ErrorHandling.consistency(br2)) System.out.println("The XML File Is Consistent");
+                    if (ErrorHandling.consistency(br3)) System.out.println("The XML File Is Consistent");
                     else System.out.println("The XML File Is Not Consistent");
                     break;
                 case 2:
-                    ErrorHandling.showError(br2);
+                    ErrorHandling.showError(br3);
                     break;
                 case 3:
                     FileWriter fw2=new FileWriter("..\\new-sample-input.xml");
                     BufferedWriter bw2=new BufferedWriter(fw2);
-                    ErrorHandling.solveError(br2, bw2);
+                    ErrorHandling.solveError(br3, bw2);
                     System.out.println("Errors Solved Successfully");
+                    fw2.close();
                     bw2.close();
                     break;
                 case 4:
-                    String formattedString = Formatting.FormatXML(xml2string);
+                    String formattedString = Formatting.formatXML(xml2string);
                     System.out.println(formattedString);
                     break;
                 case 5:
@@ -63,15 +63,17 @@ public class Main {
                 case 7:
                     FileWriter fw3=new FileWriter("..\\sample-input-compressed.xml");
                     BufferedWriter bw3=new BufferedWriter(fw3);
-                    System.out.println(Compression.compress(br2,bw3));
+                    System.out.println(Compression.compress(br3,bw3));
                     System.out.println("File Compressed Successfully");
+                    fw3.close();
+                    bw3.close();
                     break;
                 case 8:
                     FileReader fr4=new FileReader("..\\sample-input-compressed.xml");
                     BufferedReader br4=new BufferedReader(fr4);
-                    FileWriter fw4=new FileWriter("..\\sample-input-compressed.xml");
-                    BufferedWriter bw4=new BufferedWriter(fw4);
-                    System.out.println(Compression.decompress(Compression.compress(br2,bw4)));
+                    System.out.println(Compression.decompress(br4));
+                    fr4.close();
+                    br4.close();
                     break;
                 case 9:
                     GraphNode mostInfluencer = NetworkAnalysis.mostInfluencer(constructedGraph, users);
@@ -105,8 +107,8 @@ public class Main {
                     System.out.println("invalid entry");
                     break;
             }
-            fr2.close();
-            br2.close();
+            fr3.close();
+            br3.close();
         }
     }
 }
