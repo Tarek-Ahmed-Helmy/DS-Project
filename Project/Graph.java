@@ -2,11 +2,11 @@ public class Graph {
     int[][] graph;
     int [] inDegree,outDegree;
     int v;
-    public Graph(int n) {
+    public Graph(int n) { // constructor that makes a 2d adjacency matrix
         this.v = n;
-        graph = new int[n+1][n+1];
-        inDegree = new int [n+1];
-        outDegree = new int [n+1];
+        graph = new int[n+1][n+1]; // the graph
+        inDegree = new int [n+1]; // the indegree array which has info about the indegrees of a vertix
+        outDegree = new int [n+1]; // the outdegree array which has info about the outdegrees of a vertix
         for(int i=1;i<=n;i++) {
             inDegree[i] = 0;
             outDegree[i] = 0;
@@ -16,7 +16,7 @@ public class Graph {
 
     }
     void addEdge(int start, int end) {
-        graph[start][end]=1;
+        graph[start][end]=1; // the row represents the outdegree relation between a vertix and all other vertices 
         outDegree[start]++;
         inDegree[end]++;
     }

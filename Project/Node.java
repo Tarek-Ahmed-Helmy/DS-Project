@@ -1,6 +1,6 @@
 import java.util.*;
-public class Node{
-	private String tag;
+public class Node{  // a node representing a tag with its data
+	private final String tag;
     private String data;
     private final List<Node> children = new ArrayList<>();
     public Node(String t, String d){
@@ -17,9 +17,6 @@ public class Node{
     public String getData()
     {
         return this.data;
-    }
-    public void setTag(String tag) {
-        this.tag = tag;
     }
     public void setData(String data) {
         this.data = data;

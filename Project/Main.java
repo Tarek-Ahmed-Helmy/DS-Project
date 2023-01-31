@@ -23,9 +23,9 @@ public class Main {
         xmlTree.fillTree(xml2string);
         List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
         Graph constructedGraph = GraphConstruction.construct(users);
-        fr1.close();
-        fr2.close();
-        fw1.close();
+        br1.close();
+        br2.close();
+        bw1.close();
         while (true){
             FileReader fr3=new FileReader("..\\sample-input.xml");
             BufferedReader br3=new BufferedReader(fr3);
@@ -46,7 +46,6 @@ public class Main {
                     BufferedWriter bw2=new BufferedWriter(fw2);
                     ErrorHandling.solveError(br3, bw2);
                     System.out.println("Errors Solved Successfully");
-                    fw2.close();
                     bw2.close();
                     break;
                 case 4:
@@ -57,7 +56,7 @@ public class Main {
                     JsonConversion.printJSON(xmlTree.getRoot());
                     break;
                 case 6:
-                    String minifiedString = Formatting.Minify(xml2string);
+                    String minifiedString = Formatting.minify(xml2string);
                     System.out.println(minifiedString);
                     break;
                 case 7:
@@ -65,14 +64,12 @@ public class Main {
                     BufferedWriter bw3=new BufferedWriter(fw3);
                     System.out.println(Compression.compress(br3,bw3));
                     System.out.println("File Compressed Successfully");
-                    fw3.close();
                     bw3.close();
                     break;
                 case 8:
                     FileReader fr4=new FileReader("..\\sample-input-compressed.xml");
                     BufferedReader br4=new BufferedReader(fr4);
                     System.out.println(Compression.decompress(br4));
-                    fr4.close();
                     br4.close();
                     break;
                 case 9:
@@ -107,7 +104,6 @@ public class Main {
                     System.out.println("invalid entry");
                     break;
             }
-            fr3.close();
             br3.close();
         }
     }

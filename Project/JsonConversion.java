@@ -24,5 +24,6 @@ public class JsonConversion {
 				System.out.print("\t]");
 			}
 		}
+		System.out.println();
 	}
 }

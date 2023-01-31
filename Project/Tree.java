@@ -1,13 +1,13 @@
 import java.util.*;
-public class Tree{
+public class Tree{ // a class to represent the xml file as a tree
 	private Node root;
 	public Tree(){
 		root = null;
 	}
-	Node getRoot() {
+	Node getRoot() { // simply return the tree root
 		return root;
 	}
-	public void fillTree(String file){
+	public void fillTree(String file){ // a method to fill the tree level by level
 		String[] words;
 		Stack<Node> nodes = new Stack<>();
 		Scanner scanner = new Scanner(file);
