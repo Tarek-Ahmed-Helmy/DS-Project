@@ -4,7 +4,7 @@ import java.util.List;
 // a class containing the 4 main Network Analysis functions: mostInfluencer, mostActive, mutualFollowers and suggestions
 
 public class NetworkAnalysis {
-    public static GraphNode mostInfluencer(Graph graph, List<GraphNode> graphNodeList){ // the most influencer is the user that has the max indegree i.e has the max number of followers
+    public static GraphNode mostInfluencer(Graph graph, List<GraphNode> graphNodeList){ // the most influencer is the user that has the max in-degree i.e. has the max number of followers
         int max=0,index=1;
         for(int i=1;i<=graph.v;i++){
             if (graph.inDegree[i] > max){
@@ -15,7 +15,7 @@ public class NetworkAnalysis {
         return graphNodeList.get(index-1);
     }
 
-    public static GraphNode mostActive(Graph graph,List<GraphNode> graphNodeList){  // the most active user is the one having the max sum of indegree and out degree
+    public static GraphNode mostActive(Graph graph,List<GraphNode> graphNodeList){  // the most active user is the one having the max sum of in-degree and out degree
         int max=0,index=1;
         for(int i=1;i<=graph.v;i++){
             if (graph.inDegree[i]+graph.outDegree[i] > max){
@@ -52,7 +52,7 @@ public class NetworkAnalysis {
         return mutualFollowers;
     }
 
-	// here we want to get to the followers of the followers so we iterate over the followers for the desired user
+	// here we want to get to the followers of the followers, so we iterate over the followers for the desired user
 	// and for every follower we iterate over his followers. if one of them is not following the desired user then we suggest him.
     public static List<GraphNode> suggestions(List<GraphNode> graphNodeList, int id){
         if(id<1||id>graphNodeList.size()){
@@ -63,9 +63,9 @@ public class NetworkAnalysis {
         List<GraphNode> suggestionsList = new ArrayList<>();
         int[] freq = new int [graphNodeList.size()+1];
         for(int i=0;i<=graphNodeList.size();i++) freq[i]=0;
-        freq[Integer.parseInt(A.id)]=1;  // initialize the desired user to be 1 so we don't take him in count of the suggestions list
+        freq[Integer.parseInt(A.id)]=1;  // initialize the desired user to be 1, so we don't take him in count of the suggestions list
 	
-        for (String follower:A.followersIds)  // this for each loop to initialize the desired user followers with 1's so we don't suggest them again.
+        for (String follower:A.followersIds)  // this for each loop to initialize the desired user followers with 1's, so we don't suggest them again.
             freq[Integer.parseInt(follower)]=1;
 
         for (String follower:A.followersIds){

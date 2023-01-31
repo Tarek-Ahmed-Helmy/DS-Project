@@ -9,7 +9,7 @@ digraph G {
   6 [label="id 6\nYoussef Hesham"]
   1 -> 2 [ penwidth=2, color=blue]
   1 -> 4 [ penwidth=2, color=blue]
-  
+
   2 -> {3,4,6,1} [ penwidth=2, color=blue]
   
   
