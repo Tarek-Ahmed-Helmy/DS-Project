@@ -92,7 +92,9 @@ public class Main {
                     break;
                 case 12:
                     int user_ = in.nextInt();
-                    List<GraphNode> suggestionFollowers = NetworkAnalysis.suggestions(users, users.get(user_-1));
+                    List<GraphNode> suggestionFollowers = NetworkAnalysis.suggestions(users, user_);
+                    if(suggestionFollowers==null)
+                        break;
                     for (GraphNode user:suggestionFollowers){
                         System.out.println(user.name + ": " + user.id);
                     }
