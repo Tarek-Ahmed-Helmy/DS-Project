@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// a class containing the 4 main Network Analysis functions: mostInfluencer, mostActive, mutualFollowers and suggestions
+
 public class NetworkAnalysis {
-    public static GraphNode mostInfluencer(Graph graph, List<GraphNode> graphNodeList){
+    public static GraphNode mostInfluencer(Graph graph, List<GraphNode> graphNodeList){ // the most influencer is the user that has the max indegree i.e has the max number of followers
         int max=0,index=1;
         for(int i=1;i<=graph.v;i++){
             if (graph.inDegree[i] > max){
@@ -13,7 +15,7 @@ public class NetworkAnalysis {
         return graphNodeList.get(index-1);
     }
 
-    public static GraphNode mostActive(Graph graph,List<GraphNode> graphNodeList){
+    public static GraphNode mostActive(Graph graph,List<GraphNode> graphNodeList){  // the most active user is the one having the max sum of indegree and out degree
         int max=0,index=1;
         for(int i=1;i<=graph.v;i++){
             if (graph.inDegree[i]+graph.outDegree[i] > max){
@@ -24,7 +26,7 @@ public class NetworkAnalysis {
         return graphNodeList.get(index-1);
     }
 
-    public static List<GraphNode> mutualFollowers(Graph graph,List<GraphNode> graphNodeList, GraphNode A, GraphNode B){
+    public static List<GraphNode> mutualFollowers(Graph graph,List<GraphNode> graphNodeList, GraphNode A, GraphNode B){   
         List<GraphNode> mutualFollowers = new ArrayList<>();
         for(int i=1;i<=graph.v;i++){
             if ((graph.graph[i][Integer.parseInt(A.id)] + graph.graph[i][Integer.parseInt(B.id)])==2){
