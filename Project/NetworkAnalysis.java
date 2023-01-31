@@ -26,9 +26,12 @@ public class NetworkAnalysis {
         return graphNodeList.get(index-1);
     }
 
+	// here we iterate over the users ids and when someone's id makes our addition equal 2 then this is a mutual follower
+	
     public static List<GraphNode> mutualFollowers(Graph graph,List<GraphNode> graphNodeList, GraphNode A, GraphNode B){   
         List<GraphNode> mutualFollowers = new ArrayList<>();
         for(int i=1;i<=graph.v;i++){
+	    // if 1->2 and 1->3 then graph.graph[1][2]==1 is true, also graph.graph[1][3]==1 is true so the addition is equal to 2
             if ((graph.graph[i][Integer.parseInt(A.id)] + graph.graph[i][Integer.parseInt(B.id)])==2){
                 mutualFollowers.add(graphNodeList.get(i-1));
             }
