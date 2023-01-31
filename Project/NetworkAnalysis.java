@@ -39,18 +39,20 @@ public class NetworkAnalysis {
         return mutualFollowers;
     }
 
+	// here we want to get to the followers of the followers so we iterate over the followers for the desired user
+	// and for every follower we iterate over his followers. if one of them is not following the desired user then we suggest him.
     public static List<GraphNode> suggestions(List<GraphNode> graphNodeList, GraphNode A){
         List<GraphNode> suggestionsList = new ArrayList<>();
         int[] freq = new int [graphNodeList.size()+1];
         for(int i=0;i<=graphNodeList.size();i++) freq[i]=0;
-        freq[Integer.parseInt(A.id)]=1;
-
-        for (String follower:A.followersIds)
+        freq[Integer.parseInt(A.id)]=1;  // initialize the desired user to be 1 so we don't take him in count of the suggestions list
+	
+        for (String follower:A.followersIds)  // this for each loop to initialize the desired user followers with 1's so we don't suggest them again.
             freq[Integer.parseInt(follower)]=1;
 
         for (String follower:A.followersIds){
             for(String followerA:graphNodeList.get(Integer.parseInt(follower)-1).followersIds){
-                if(freq[Integer.parseInt(followerA)]==0){
+                if(freq[Integer.parseInt(followerA)]==0){  // here any follower of the followers that isn't there in our freq list is taken into the suggestions list
                     suggestionsList.add(graphNodeList.get(Integer.parseInt(followerA)-1));
                     freq[Integer.parseInt(followerA)]=1;
                 }
