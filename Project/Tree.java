@@ -8,7 +8,7 @@ public class Tree{ // a class to represent the xml file as a tree
 		return root;
 	}
 	public void fillTree(String file){ // a method to fill the tree level by level
-		file = file.replaceAll("\n+","\n");
+		file = file.replaceAll("\n+","\n");    // Remove empty lines
 		String[] words;
 		Stack<Node> nodes = new Stack<>();
 		Scanner scanner = new Scanner(file);
