@@ -57,7 +57,7 @@ public class Compression {
         }
         String s = sb.toString();    // Converting Compresssed file to string
         StringBuilder current = new StringBuilder();             //current integr being processed in file 
-        StringBuilder result = new StringBuilder();           // result string of compressed file
+        StringBuilder result = new StringBuilder();           // result string of the decompressed file
         for(int r=0; r< s.length()-1; r++){
             current.delete(0, current.length());
             while(s.charAt(r) != ' '){                            
