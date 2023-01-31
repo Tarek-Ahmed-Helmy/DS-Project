@@ -59,7 +59,7 @@ public class ErrorHandling {
             stack.pop();
         }
     }
-
+	// here we have a simple function that checks the consistency of the xml file at the first error it finds it immediatly returns false
     public static boolean consistency(BufferedReader br) throws IOException {
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_closing_tag;
@@ -82,7 +82,7 @@ public class ErrorHandling {
         }
         return stack.isEmpty();
     }
-
+	// this function is kinda similar to solveError but it instead of writing to a file it prints the error location and description
     public static void showError(BufferedReader br) throws IOException {
         int lineNumber=1;
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), opening_tag_W= Pattern.compile("<(\\w+)>\\w+"), closing_tag= Pattern.compile("</(\\w+)>");
