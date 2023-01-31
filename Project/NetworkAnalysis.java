@@ -42,6 +42,7 @@ public class NetworkAnalysis {
 	// here we want to get to the followers of the followers so we iterate over the followers for the desired user
 	// and for every follower we iterate over his followers. if one of them is not following the desired user then we suggest him.
     public static List<GraphNode> suggestions(List<GraphNode> graphNodeList, GraphNode A){
+
         List<GraphNode> suggestionsList = new ArrayList<>();
         int[] freq = new int [graphNodeList.size()+1];
         for(int i=0;i<=graphNodeList.size();i++) freq[i]=0;
