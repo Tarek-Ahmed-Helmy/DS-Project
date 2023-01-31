@@ -104,6 +104,10 @@ public class Main {
                     word = in.next();
                     GraphConstruction.search(users,word);
                     break;
+                case 14:
+                    Graphviz.dotGen(users);
+                    Runtime.getRuntime().exec("dot-Tpng graph.dot -o graph.png");
+                    break;
                 default:
                     System.out.println("invalid entry");
                     break;
