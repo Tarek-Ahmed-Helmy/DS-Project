@@ -1,7 +1,12 @@
 import java.io.*;
 import java.util.*;
+// the compression technique is inspired by lzw coding
+// The LZW compression technique scans a string of symbols, strings are then combined into codes by the algorithm. It makes an entry in a table
+// for each input bit pattern, comprising of the pattern itself and a shorter code, for each input bit pattern of a specific length,
+// let's say 12 bits. The table is sometimes known as a codebook or dictionary. It maintains correspondence between the longest words encountered
+// and a list of code values while storing character sequences dynamically selected from the input text.
 public class Compression {
-    public static ArrayList<String> tokens = new ArrayList<>();
+    public static ArrayList<String> tokens = new ArrayList<>(); // thats our dictionary.
     public static String compress(BufferedReader br, BufferedWriter bw) throws IOException{
         String line = br.readLine();
         StringBuilder XML = new StringBuilder();
