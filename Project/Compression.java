@@ -2,11 +2,11 @@ import java.io.*;
 import java.util.*;
 // the compression technique is inspired by lzw coding
 // The LZW compression technique scans a string of symbols, strings are then combined into codes by the algorithm. It makes an entry in a table
-// for each input bit pattern, comprising of the pattern itself and a shorter code, for each input bit pattern of a specific length,
+// for each input bit pattern, comprising the pattern itself and a shorter code, for each input bit pattern of a specific length,
 // let's say 12 bits. The table is sometimes known as a codebook or dictionary. It maintains correspondence between the longest words encountered
 // and a list of code values while storing character sequences dynamically selected from the input text.
 public class Compression {
-    public static ArrayList<String> tokens = new ArrayList<>(); // thats our dictionary.
+    public static ArrayList<String> tokens = new ArrayList<>(); // that's our dictionary.
     public static String compress(BufferedReader br, BufferedWriter bw) throws IOException{
         String line = br.readLine();
         StringBuilder XML = new StringBuilder();
@@ -20,7 +20,7 @@ public class Compression {
         String replace;
         int index;
         String[] chars = s.split("");
-        for (String aChar : chars) {         //Adding all chrachters of XML in chars array
+        for (String aChar : chars) {         //Adding all characters of XML in chars array
             if (!tokens.contains(aChar)) {
                 tokens.add(aChar);
             }
@@ -29,7 +29,7 @@ public class Compression {
         int i = 0;
         int j;
         while( i < s.length()){
-            StringBuilder temp = new StringBuilder();         //Sting Builder of chrachter to be checked
+            StringBuilder temp = new StringBuilder();         //Sting Builder of character to be checked
             j = i;
             temp.append(s.charAt(j));
             j++;
@@ -44,7 +44,7 @@ public class Compression {
             else replace = temp.substring(0 , temp.length() - 1);      
             if(!tokens.contains(temp.toString())) tokens.add(temp.toString());
             index = tokens.indexOf(replace);          
-            sb.append(index);               //replacing the temp with a it's index in tokens
+            sb.append(index);               //replacing the temp with its index in tokens
             sb.append(' ');
             if(i == s.length() - 1) break;
             i += temp.length() - 1;
@@ -60,8 +60,8 @@ public class Compression {
             sb.append(line).append("\n");
             line = br.readLine();
         }
-        String s = sb.toString();    // Converting Compresssed file to string
-        StringBuilder current = new StringBuilder();             //current integr being processed in file 
+        String s = sb.toString();    // Converting Compressed file to string
+        StringBuilder current = new StringBuilder();             //current integer being processed in file
         StringBuilder result = new StringBuilder();           // result string of compressed file
         for(int r=0; r< s.length()-1; r++){
             current.delete(0, current.length());

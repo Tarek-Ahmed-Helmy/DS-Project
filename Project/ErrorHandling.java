@@ -31,7 +31,7 @@ public class ErrorHandling {
                 checkIfNoErrors=false;
                 stack.pop();
             }
-            else if(open && close){ // if there is an opening tag and a closing tag and thats the right match then pop from stack.
+            else if(open && close){ // if there is an opening tag and a closing tag and that's the right match then pop from stack.
                 if(matcher_opening_tag.group(1).equals(matcher_closing_tag.group(1))){
                     stack.pop();
                 }
@@ -59,7 +59,7 @@ public class ErrorHandling {
             stack.pop();
         }
     }
-	// here we have a simple function that checks the consistency of the xml file at the first error it finds it immediatly returns false
+	// here we have a simple function that checks the consistency of the xml file at the first error it finds it immediately returns false
     public static boolean consistency(BufferedReader br) throws IOException {
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_closing_tag;
