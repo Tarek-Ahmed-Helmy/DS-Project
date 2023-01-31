@@ -12,7 +12,7 @@ public class Tree {
 	}
 
 	public void fillTree(String file) {
-		
+		file = file.replaceAll("\n+","\n");
 		String[] words;
 		
 		Stack<Node> nodes = new Stack<Node>();
