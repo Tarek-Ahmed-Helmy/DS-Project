@@ -54,6 +54,7 @@ public class XML_View extends JFrame {
 		return xml2string;
 	}
     public XML_View() {
+        setTitle("XML Editor");
         initComponents();
     }
 
@@ -327,6 +328,7 @@ public class XML_View extends JFrame {
 	System.setOut(old);
 	String json = baos.toString();
 	jTextArea1.insert(json,0);
+        jLabel1.setText("XML converted to JSON");
     }//GEN-LAST:event_convertJSONbtnActionPerformed
 
     private void formatbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatbtnActionPerformed
@@ -375,6 +377,7 @@ public class XML_View extends JFrame {
             file_C = new File("..\\compress.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
             jTextArea1.setText(Compression.compress(br,bw3));
+            jLabel1.setText("XML file is compressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -388,6 +391,7 @@ public class XML_View extends JFrame {
             fr_c = new FileReader(file_C);
             BufferedReader br = new BufferedReader(fr_c);
             jTextArea1.setText(Compression.decompress(br));
+            jLabel1.setText("XML file is decompressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
         }

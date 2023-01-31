@@ -10,12 +10,12 @@ public class Compression {
             XML.append("\n");
             line = br.readLine();
         }
-        String s = XML.toString();
+        String s = XML.toString();         //Converted XML to String
         StringBuilder sb = new StringBuilder();
         String replace;
         int index;
         String[] chars = s.split("");
-        for (String aChar : chars) {
+        for (String aChar : chars) {         //Adding all chrachters of XML in chars array
             if (!tokens.contains(aChar)) {
                 tokens.add(aChar);
             }
@@ -24,11 +24,11 @@ public class Compression {
         int i = 0;
         int j;
         while( i < s.length()){
-            StringBuilder temp = new StringBuilder();
+            StringBuilder temp = new StringBuilder();         //Sting Builder of chrachter to be checked
             j = i;
             temp.append(s.charAt(j));
             j++;
-            while(tokens.contains(temp.toString()) && j <s.length()){
+            while(tokens.contains(temp.toString()) && j <s.length()){       //Adding chars to temp until the given string is not present in token
                 temp.append(s.charAt(j));
                 j++;
             }
@@ -36,10 +36,10 @@ public class Compression {
                 replace = temp.toString();
                 i++;
             }
-            else replace = temp.substring(0 , temp.length() - 1);
+            else replace = temp.substring(0 , temp.length() - 1);      
             if(!tokens.contains(temp.toString())) tokens.add(temp.toString());
-            index = tokens.indexOf(replace);
-            sb.append(index);
+            index = tokens.indexOf(replace);          
+            sb.append(index);               //replacing the temp with a it's index in tokens
             sb.append(' ');
             if(i == s.length() - 1) break;
             i += temp.length() - 1;
@@ -55,16 +55,16 @@ public class Compression {
             sb.append(line).append("\n");
             line = br.readLine();
         }
-        String s = sb.toString();
-        StringBuilder current = new StringBuilder();
-        StringBuilder result = new StringBuilder();
+        String s = sb.toString();    // Converting Compresssed file to string
+        StringBuilder current = new StringBuilder();             //current integr being processed in file 
+        StringBuilder result = new StringBuilder();           // result string of compressed file
         for(int r=0; r< s.length()-1; r++){
             current.delete(0, current.length());
-            while(s.charAt(r) != ' '){
+            while(s.charAt(r) != ' '){                            
                 current.append(s.charAt(r));
                 r++;
             }
-            result.append(tokens.get(Integer.parseInt(current.toString())));
+            result.append(tokens.get(Integer.parseInt(current.toString())));         
         }
         return result.toString();
     }
