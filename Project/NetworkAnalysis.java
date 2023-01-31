@@ -28,11 +28,24 @@ public class NetworkAnalysis {
 
 	// here we iterate over the users ids and when someone's id makes our addition equal 2 then this is a mutual follower
 	
-    public static List<GraphNode> mutualFollowers(Graph graph,List<GraphNode> graphNodeList, GraphNode A, GraphNode B){   
+    public static List<GraphNode> mutualFollowers(Graph graph,List<GraphNode> graphNodeList, int A, int B){
+        if((A>graphNodeList.size()||A<1)&&(B<=graphNodeList.size()&&B>0)) {
+            System.out.println("The first user does not exist!");
+            return null;
+        }
+        else if((B>graphNodeList.size()||B<1)&&(A<=graphNodeList.size()&&A>0)) {
+            System.out.println("The second user does not exist!");
+            return null;
+        }
+        else if((B>graphNodeList.size()||B<1)&&(A>graphNodeList.size()||A<1))
+        {
+            System.out.println("Those users do not exist!");
+            return null;
+        }
         List<GraphNode> mutualFollowers = new ArrayList<>();
         for(int i=1;i<=graph.v;i++){
 	    // if 1->2 and 1->3 then graph.graph[1][2]==1 is true, also graph.graph[1][3]==1 is true so the addition is equal to 2
-            if ((graph.graph[i][Integer.parseInt(A.id)] + graph.graph[i][Integer.parseInt(B.id)])==2){
+            if ((graph.graph[i][A] + graph.graph[i][B])==2){
                 mutualFollowers.add(graphNodeList.get(i-1));
             }
         }
