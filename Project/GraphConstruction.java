@@ -48,13 +48,21 @@ public class GraphConstruction{
     }
 
     public static void search(List<GraphNode> graphNodeList, String word){ // search for a word by checking all posts and topics
+        boolean found=false;
         for(GraphNode user:graphNodeList){
             for (String topic:user.topics){
-                if(topic.contains(word)) System.out.println(topic);
+                if(topic.contains(word)) {
+                    System.out.println(topic);
+                    found=true;
+                }
             }
             for (String post:user.posts){
-                if (post.contains(word)) System.out.println(post);
+                if (post.contains(word)) {
+                    System.out.println(post);
+                    found=true;
+                }
             }
         }
+        if(!found) System.out.println("The word you are searching for isn't found!");
     }
 }

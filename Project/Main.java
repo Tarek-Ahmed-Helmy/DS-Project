@@ -79,7 +79,9 @@ public class Main {
                 case 10:
                     int user1ID = in.nextInt();
                     int user2ID = in.nextInt();
-                    List<GraphNode> mutualFollowers = NetworkAnalysis.mutualFollowers(constructedGraph, users, users.get(user1ID-1), users.get(user2ID-1));
+                    List<GraphNode> mutualFollowers = NetworkAnalysis.mutualFollowers(constructedGraph, users,user1ID, user2ID);
+                    if(mutualFollowers==null)
+                        break;
                     for (GraphNode user:mutualFollowers){
                         System.out.println(user.name + ": " + user.id);
                     }
@@ -90,7 +92,9 @@ public class Main {
                     break;
                 case 12:
                     int user_ = in.nextInt();
-                    List<GraphNode> suggestionFollowers = NetworkAnalysis.suggestions(users, users.get(user_-1));
+                    List<GraphNode> suggestionFollowers = NetworkAnalysis.suggestions(users, user_);
+                    if(suggestionFollowers==null)
+                        break;
                     for (GraphNode user:suggestionFollowers){
                         System.out.println(user.name + ": " + user.id);
                     }
