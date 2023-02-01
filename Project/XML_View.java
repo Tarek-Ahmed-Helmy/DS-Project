@@ -115,21 +115,24 @@ public class XML_View extends JFrame {
         suggestFlwrbtn.addActionListener(this::suggestFlwrbtnActionPerformed);
         
         JButton graphvisbtn = new JButton();
-        graphvisbtn.addActionListener(e -> {
-            	Tree xmlTree = new Tree();
+        graphvisbtn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Tree xmlTree = new Tree();
                 xmlTree.fillTree(xml2string);
-        	List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
-        	try {
-				GraphVisualization.dotGen(users);
-				Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
-				GraphImage image = new GraphImage();
+        		List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+        		try {
+					GraphVisualization.dotGen(users);
+					Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
+					GraphImage image = new GraphImage();
 	        		image.sendXML(xml2string);
 	        		image.setVisible(true);
-			} catch (IOException e1) {
+				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
+					e1.printStackTrace();
+				}
+        		
+                
+        	}
         });
         graphvisbtn.setText("Visualize Graph");
         graphvisbtn.setFont(new Font("Segoe UI", Font.BOLD, 12));
