@@ -330,7 +330,7 @@ public class XML_View extends JFrame {
 	PrintStream ps = new PrintStream(baos);
 	PrintStream old = System.out;
 	System.setOut(ps);
-	XMLtoJSON.printJSON(xmltree.getRoot());
+	JsonConversion.printJSON(xmltree.getRoot());
 	System.out.flush();
 	System.setOut(old);
 	String json = baos.toString();
@@ -518,11 +518,23 @@ public class XML_View extends JFrame {
     }//GEN-LAST:event_visualizebtnActionPerformed
 
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new XML_View().setVisible(true);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        });
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(XML_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(XML_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(XML_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(XML_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        java.awt.EventQueue.invokeLater(() -> new XML_View().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
