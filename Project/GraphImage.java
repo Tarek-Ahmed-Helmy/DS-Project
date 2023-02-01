@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-||||||| c4e7c9b
-package xmlproj;
-
-=======
-
->>>>>>> 6db8bc5bceb09ce664f9e30ad3b2cf7bd5cd8a32
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
