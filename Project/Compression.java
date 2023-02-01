@@ -7,7 +7,9 @@ import java.util.*;
 // and a list of code values while storing character sequences dynamically selected from the input text.
 public class Compression {
     public static ArrayList<String> tokens = new ArrayList<>(); // that's our dictionary.
-    public static String compress(BufferedReader br, BufferedWriter bw) throws IOException{
+    public static String compress(String str, BufferedWriter bw) throws IOException{
+        StringReader reader = new StringReader(str);
+    	BufferedReader br = new BufferedReader(reader);
         String line = br.readLine();
         StringBuilder XML = new StringBuilder();
         while(line != null){
