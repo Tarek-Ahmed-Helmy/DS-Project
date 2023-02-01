@@ -1,20 +1,19 @@
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// this class consists of 3 static methods one to solve the error, one to show the consistency and one to show the errors (if any)
-
-public class ErrorHandling {  
-
-    // solve the error by creating a pattern by regex and see if there is a match to it. if there was a match then go get that tag content and put it on a stack. 
-    // if you find the closing tag of it then pop from stack and all things are fine. if you find a mismatch then there is something wrong.
-    public static void solveError(BufferedReader br, BufferedWriter bw) throws IOException {
+public class ErrorHandling {
+    public static void solveError(String str, BufferedWriter bw) throws IOException {
+    	StringReader reader = new StringReader(str);
+    	BufferedReader br = new BufferedReader(reader);
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), opening_tag_W= Pattern.compile("<(\\w+)>\\w+"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_opening_tag_W, matcher_closing_tag;
-        Stack<TagError> stack = new Stack<>();
+        Stack<TagError> stack = new Stack<TagError>();
         String line=br.readLine();
         while(line!=null){
             matcher_opening_tag=opening_tag.matcher(line);
@@ -22,16 +21,16 @@ public class ErrorHandling {
             matcher_closing_tag=closing_tag.matcher(line);
             boolean open=matcher_opening_tag.find(), open_W=matcher_opening_tag_W.find(), close=matcher_closing_tag.find();
             boolean checkIfNoErrors=true;
-            if(open){ // you found an opening tag then push to stack the possible error.
+            if(open){
                 TagError error = new TagError(matcher_opening_tag.group(1));
                 stack.push(error);
             }
-            if(open_W && !close){ // if there is an opening tag followed by some words like "<id>1 "and not a closing tag
+            if(open_W && !close){
                 bw.append(line).append("</").append(matcher_opening_tag.group(1)).append(">\n");
                 checkIfNoErrors=false;
                 stack.pop();
             }
-            else if(open && close){ // if there is an opening tag and a closing tag and that's the right match then pop from stack.
+            else if(open && close){
                 if(matcher_opening_tag.group(1).equals(matcher_closing_tag.group(1))){
                     stack.pop();
                 }
@@ -42,7 +41,7 @@ public class ErrorHandling {
                     stack.pop();
                 }
             }
-            else if(close) { // if there is only a close tag like "</user>" 
+            else if(close) {
                 while(!(stack.peek().content.equals(matcher_closing_tag.group(1))&&!stack.isEmpty())) {
                     bw.append("</").append(stack.peek().content).append(">\n");
                     stack.pop();
@@ -59,11 +58,13 @@ public class ErrorHandling {
             stack.pop();
         }
     }
-	// here we have a simple function that checks the consistency of the xml file at the first error it finds it immediately returns false
-    public static boolean consistency(BufferedReader br) throws IOException {
+
+    public static boolean consistency(String str) throws IOException {
+    	StringReader reader = new StringReader(str);
+    	BufferedReader br = new BufferedReader(reader);
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_closing_tag;
-        Stack<String> stack = new Stack<>();
+        Stack<String> stack = new Stack<String>();
         String line=br.readLine();
         while(line!=null){
             matcher_opening_tag=opening_tag.matcher(line);
@@ -80,14 +81,19 @@ public class ErrorHandling {
             }
             line=br.readLine();
         }
-        return stack.isEmpty();
+        if(!stack.isEmpty()){
+            return false;
+        }
+        return true;
     }
-	// this function is kinda similar to solveError but it instead of writing to a file it prints the error location and description
-    public static void showError(BufferedReader br) throws IOException {
+
+    public static void showError(String str) throws IOException {
+    	StringReader reader = new StringReader(str);
+    	BufferedReader br = new BufferedReader(reader);
         int lineNumber=1;
         Pattern opening_tag= Pattern.compile("<(\\w+)>"), opening_tag_W= Pattern.compile("<(\\w+)>\\w+"), closing_tag= Pattern.compile("</(\\w+)>");
         Matcher matcher_opening_tag, matcher_opening_tag_W, matcher_closing_tag;
-        Stack<TagError> stack = new Stack<>();
+        Stack<TagError> stack = new Stack<TagError>();
         String line=br.readLine();
         while(line!=null){
             matcher_opening_tag=opening_tag.matcher(line);
