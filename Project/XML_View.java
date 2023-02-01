@@ -323,7 +323,7 @@ public class XML_View extends JFrame {
 	PrintStream ps = new PrintStream(baos);
 	PrintStream old = System.out;
 	System.setOut(ps);
-	XMLtoJSON.printJSON(xmltree.getRoot());
+	JsonConversion.printJSON(xmltree.getRoot());
 	System.out.flush();
 	System.setOut(old);
 	String json = baos.toString();
