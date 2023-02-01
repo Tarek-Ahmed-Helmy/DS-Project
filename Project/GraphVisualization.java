@@ -2,7 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-class Graphviz{
+class GraphVisualization{
     public static void dotGen(List<GraphNode> users) throws IOException {
         FileWriter fw = new FileWriter("graph.dot");
         fw.write("digraph {\nrankdir=LR;\nnode [shape=circle, style=filled, fillcolor=lightblue, fontname=Arial, fontsize=14];\n");
