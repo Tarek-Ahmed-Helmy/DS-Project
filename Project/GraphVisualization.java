@@ -6,7 +6,6 @@ class GraphVisualization{
     public static void dotGen(List<GraphNode> users) throws IOException {
         FileWriter fw = new FileWriter("output\\graph.dot");
         fw.write("digraph {\nrankdir=LR;\nnode [shape=circle, style=filled, fillcolor=lightblue, fontname=Arial, fontsize=14];\n");
-
         for (int i=0;i<users.size();i++){
             fw.write(GraphNode.getNode(users, i).id + " [label=\"" + GraphNode.getNode(users, i).name+ "\n id = "+ GraphNode.getNode(users, i).id + "\"];\n");
             for(int j=0;j<GraphNode.getNode(users, i).followersIds.size();j++){
@@ -15,4 +14,5 @@ class GraphVisualization{
         }
         fw.write("}");
         fw.close();
-    }}
+    }
+}

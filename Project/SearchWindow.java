@@ -11,82 +11,58 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
-import java.awt.event.ActionEvent;
 
 public class SearchWindow extends JFrame {
 	String xmlstring;
-	private JPanel contentPane;
-	private JTextField textField;
-
-	/**
-	 * Launch the application.
-	 */
+	private final JPanel contentPane;
+	private final JTextField textField;
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SearchWindow frame = new SearchWindow();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				SearchWindow frame = new SearchWindow();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
 	public void sendXML(String str) {
 		xmlstring = str;
 	}
-	/**
-	 * Create the frame.
-	 */
 	JTextArea textArea = new JTextArea();
 	public SearchWindow() {
-                setTitle("Search Window");
+		setTitle("Search Window");
 		setBounds(100, 100, 557, 371);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
-		
 		textField = new JTextField();
 		textField.setColumns(10);
-		
 		JLabel lblNewLabel = new JLabel("Enter word to be searched:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		
 		JScrollPane scrollPane = new JScrollPane();
-		
 		JButton btnNewButton = new JButton("Search");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String word = textField.getText();
-				Tree xmlTree = new Tree();
-                xmlTree.fillTree(xmlstring);
-                List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				PrintStream ps = new PrintStream(baos);
-				PrintStream old = System.out;
-				System.setOut(ps);
-                GraphConstruction.search(users,word);
-                System.out.flush();
-				System.setOut(old);
-				String search = baos.toString();
-				//textArea.setText(null);
-				textArea.setText(search);
-			}
+		btnNewButton.addActionListener(e -> {
+			String word = textField.getText();
+			Tree xmlTree = new Tree();
+			xmlTree.fillTree(xmlstring);
+			List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			PrintStream ps = new PrintStream(baos);
+			PrintStream old = System.out;
+			System.setOut(ps);
+			GraphConstruction.search(users,word);
+			System.out.flush();
+			System.setOut(old);
+			String search = baos.toString();
+			textArea.setText(search);
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		
 		JButton btnNewButton_1 = new JButton("Done");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
+		btnNewButton_1.addActionListener(e -> dispose());
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -125,10 +101,7 @@ public class SearchWindow extends JFrame {
 						.addComponent(btnNewButton_1))
 					.addContainerGap())
 		);
-		
-		
 		scrollPane.setViewportView(textArea);
 		contentPane.setLayout(gl_contentPane);
 	}
-
 }

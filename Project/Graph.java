@@ -13,7 +13,6 @@ public class Graph {
             for (int j=1;j<=n;j++)
                 graph[i][j]=0;
         }
-
     }
     void addEdge(int start, int end) {
         graph[start][end]=1; // the row represents the out-degree relation between a vertex and all other vertices

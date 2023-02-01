@@ -1,38 +1,24 @@
-import java.io.*;
-import java.util.*;
+import java.util.Objects;
+
 public class JsonConversion {
-	
-	
-public static void printJSON(Node node) 
-	{	
+	public static void printJSON(Node node){
 		System.out.print("\"" + node.getTag() + "\"" + ":");
-		
-		if (node.getData() == "")
-		{
+		if (Objects.equals(node.getData(), "")){
 			System.out.print("[\n\t");
 			System.out.print("{\n\t");
-	
 		}
 		else{	
-			System.out.print("\"" + node.getData() + "\"");	
-
+			System.out.print("\"" + node.getData() + "\"");
 		}
-
-		for (int i = 0; i < node.getChildren().size(); i++)
-		{
-
-			if (node.getChildren().get(i) != null && i<node.getChildren().size()-1)
-			{
-			//	System.out.print("\t");
+		for (int i = 0; i < node.getChildren().size(); i++){
+			if (node.getChildren().get(i) != null && i<node.getChildren().size()-1){
 				printJSON(node.getChildren().get(i));	
 				System.out.print(",\n\t");
 			}
-			if( i==node.getChildren().size()-1)
-			{
+			if( i==node.getChildren().size()-1){
 				printJSON(node.getChildren().get(i));
 				System.out.println("\n\t\t}");
 				System.out.print("\t]");
-			
 			}
 		}	
 		

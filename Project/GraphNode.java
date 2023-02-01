@@ -13,5 +13,3 @@ class GraphNode {
 		return graphNodeList.get(id);
 	}
 }
-
-
