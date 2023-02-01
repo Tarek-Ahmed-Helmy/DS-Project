@@ -33,7 +33,6 @@ public class XML_View extends JFrame {
         setTitle("XML Editor");
         initComponents();
     }
-    @SuppressWarnings("unchecked")
     private void initComponents() {
         openFilebtn = new javax.swing.JButton();
         convertJSONbtn = new javax.swing.JButton();
