@@ -54,13 +54,10 @@ public class GraphImage extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				Tree xmlTree = new Tree();
-				xmlTree.fillTree(xmlstring);
-				List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+				
 				try {
-					GraphVisualization.dotGen(users);
-					Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
-					BufferedImage img = ImageIO.read(new File("..\\graph.png"));
+					
+					BufferedImage img = ImageIO.read(new File("graph.png"));
 					ImageIcon icon= new ImageIcon(img);
 					label.setIcon(icon);
 					//add(label);
