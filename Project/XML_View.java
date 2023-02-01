@@ -381,7 +381,7 @@ public class XML_View extends JFrame {
             fw3 = new FileWriter("..\\compress.xml");
             file_C = new File("..\\compress.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
-            jTextArea1.setText(Compression.compress(xml2string,bw3));
+            jTextArea1.setText(Formatting.formatXML(Compression.compress(xml2string,bw3)));
             jLabel1.setText("XML file is compressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -457,7 +457,7 @@ public class XML_View extends JFrame {
             }
             correctedxml = sb2.toString();
             xml2string = sb2.toString();
-            jTextArea1.setText(correctedxml);
+            jTextArea1.setText(Formatting.formatXML(correctedxml));
             jLabel1.setText("The errors are corrected");
             br2.close();
         } catch (IOException ex) {
@@ -507,7 +507,7 @@ public class XML_View extends JFrame {
         List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
         try {
             GraphVisualization.dotGen(users);
-            Runtime.getRuntime().exec("dot -Tpng graph.dot -O graph.png");
+            Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
             GraphImage image = new GraphImage();
 	    image.sendXML(xml2string);
 	    image.setVisible(true);
