@@ -106,7 +106,7 @@ public class Main {
                     break;
                 case 14:
                     Graphviz.dotGen(users);
-                    Runtime.getRuntime().exec("dot -Tpng graph.dot -O graph.png");
+                    Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
                     break;
                 default:
                     System.out.println("invalid entry");
