@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -350,7 +349,7 @@ public class XML_View extends JFrame {
             PrintStream ps = new PrintStream(baos);
             PrintStream old = System.out;
             System.setOut(ps);
-            if(ErrorHandling.consistency(br)){
+            if(ErrorHandling.consistency(xml2string)){
                 System.out.println("The XML File Is Consistent");
             }else {
                 System.out.println("The XML File Is Not Consistent");}
@@ -408,7 +407,7 @@ public class XML_View extends JFrame {
             PrintStream ps = new PrintStream(baos);
             PrintStream old = System.out;
             System.setOut(ps);
-            ErrorHandling.showError(br);
+            ErrorHandling.showError(xml2string);
             br.close();
             System.out.flush();
             System.setOut(old);
@@ -425,7 +424,7 @@ public class XML_View extends JFrame {
             }
             panel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
             panel.setLayout(new GridLayout(0,1));
-            showError.add(panel, BorderLayout.CENTER);
+            showError.getContentPane().add(panel, BorderLayout.CENTER);
             showError.setTitle("XML Errors");
             showError.setVisible(true);
         } catch (IOException ex) {
@@ -440,7 +439,7 @@ public class XML_View extends JFrame {
             FileWriter fw=new FileWriter("..\\sample-input-error-corrected.xml");
 	    BufferedWriter bw=new BufferedWriter(fw);
             BufferedReader br = new BufferedReader(fr);
-            ErrorHandling.solveError(br,bw);
+            ErrorHandling.solveError(xml2string,bw);
             br.close();
             bw.close();
             FileReader fr2 = new FileReader("..\\sample-input-error-corrected.xml");
