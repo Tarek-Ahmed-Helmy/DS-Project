@@ -113,7 +113,7 @@ public class Main {
                     break;
                 case 14:
                     GraphVisualization.dotGen(users);
-                    Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
+                    Runtime.getRuntime().exec("dot -Tpng output\\graph.dot -o output\\graph.png");
                     break;
                 default:
                     System.out.println("invalid entry");
