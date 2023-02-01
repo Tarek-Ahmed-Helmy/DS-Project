@@ -293,8 +293,8 @@ public class XML_View extends JFrame {
     private void compressbtnActionPerformed(java.awt.event.ActionEvent evt) {
         FileWriter fw3;
         try {
-            fw3 = new FileWriter("output\\compress.xml");
-            file_C = new File("output\\compress.xml");
+            fw3 = new FileWriter("..\\compress.xml");
+            file_C = new File("..\\compress.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
             jTextArea1.setText(Compression.compress(Formatting.formatXML(xml2string),bw3));
             jLabel1.setText("XML file is compressed");
@@ -351,13 +351,13 @@ public class XML_View extends JFrame {
     private void solveErrorbtnActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             fr = new FileReader(file);
-            FileWriter fw=new FileWriter("output\\sample-input-error-corrected.xml");
+            FileWriter fw=new FileWriter("..\\sample-input-error-corrected.xml");
 	        BufferedWriter bw=new BufferedWriter(fw);
             BufferedReader br = new BufferedReader(fr);
             ErrorHandling.solveError(xml2string,bw);
             br.close();
             bw.close();
-            FileReader fr2 = new FileReader("output\\sample-input-error-corrected.xml");
+            FileReader fr2 = new FileReader("..\\sample-input-error-corrected.xml");
             BufferedReader br2 = new BufferedReader(fr2);
             StringBuilder sb2 = new StringBuilder();
             String line2 = br2.readLine();
