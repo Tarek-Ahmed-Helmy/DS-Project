@@ -57,7 +57,7 @@ public class GraphImage extends JFrame {
 				
 				try {
 					
-					BufferedImage img = ImageIO.read(new File("graph.png"));
+					BufferedImage img = ImageIO.read(new File("graph.dot.png"));
 					ImageIcon icon= new ImageIcon(img);
 					label.setIcon(icon);
 					//add(label);

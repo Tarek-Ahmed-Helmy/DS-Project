@@ -507,7 +507,7 @@ public class XML_View extends JFrame {
         List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
         try {
             GraphVisualization.dotGen(users);
-            Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
+            Runtime.getRuntime().exec("dot -Tpng graph.dot -O graph.png");
             GraphImage image = new GraphImage();
 	    image.sendXML(xml2string);
 	    image.setVisible(true);
