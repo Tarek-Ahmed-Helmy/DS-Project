@@ -375,7 +375,7 @@ public class XML_View extends JFrame {
             fw3 = new FileWriter("..\\compress.xml");
             file_C = new File("..\\compress.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
-            jTextArea1.setText(Compression.compress(br,bw3));
+            jTextArea1.setText(Compression.compress(xml2string,bw3));
             jLabel1.setText("XML file is compressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
