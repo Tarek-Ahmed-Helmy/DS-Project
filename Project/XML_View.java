@@ -116,9 +116,19 @@ public class XML_View extends JFrame {
         
         JButton graphvisbtn = new JButton();
         graphvisbtn.addActionListener(e -> {
-            GraphImage image = new GraphImage();
-            image.sendXML(xml2string);
-            image.setVisible(true);
+            	Tree xmlTree = new Tree();
+                xmlTree.fillTree(xml2string);
+        	List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+        	try {
+				GraphVisualization.dotGen(users);
+				Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
+				GraphImage image = new GraphImage();
+	        		image.sendXML(xml2string);
+	        		image.setVisible(true);
+			} catch (IOException e1) {
+					// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
         });
         graphvisbtn.setText("Visualize Graph");
