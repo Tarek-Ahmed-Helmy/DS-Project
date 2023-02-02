@@ -87,7 +87,11 @@ public class XML_View extends JFrame {
         convertJSONbtn.setText("Convert to Json");
         convertJSONbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                convertJSONbtnActionPerformed(evt);
+                try {
+                    convertJSONbtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -349,20 +353,36 @@ public class XML_View extends JFrame {
                 }
     }
 
-    private void convertJSONbtnActionPerformed(java.awt.event.ActionEvent evt) {
-        jTextArea1.setText(null);
-        Tree xmltree = new Tree();
-        xmltree.fillTree(xml2string);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
-        PrintStream old = System.out;
-        System.setOut(ps);
-        JsonConversion.printJSON(xmltree.getRoot());
-        System.out.flush();
-        System.setOut(old);
-        String json = baos.toString();
-        jTextArea1.insert(json,0);
-        jLabel1.setText("XML converted to JSON");
+    private void convertJSONbtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before converting to JSON");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }
+        else {
+            jTextArea1.setText(null);
+            Tree xmltree = new Tree();
+            xmltree.fillTree(xml2string);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            PrintStream ps = new PrintStream(baos);
+            PrintStream old = System.out;
+            System.setOut(ps);
+            JsonConversion.printJSON(xmltree.getRoot());
+            System.out.flush();
+            System.setOut(old);
+            String json = baos.toString();
+            jTextArea1.insert(json, 0);
+            jLabel1.setText("XML converted to JSON");
+        }
     }
 
     private void formatbtnActionPerformed(java.awt.event.ActionEvent evt) {
