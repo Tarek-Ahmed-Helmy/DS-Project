@@ -378,8 +378,8 @@ public class XML_View extends JFrame {
             fr = new FileReader(file);
             FileReader my_file = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-            fw3 = new FileWriter("..\\compress.xml");
-            file_C = new File("..\\compress.xml");
+            fw3 = new FileWriter("output\\compress.xml");
+            file_C = new File("output\\compress.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
             jTextArea1.setText(Formatting.formatXML(Compression.compress(xml2string,bw3)));
             jLabel1.setText("XML file is compressed");
@@ -395,7 +395,7 @@ public class XML_View extends JFrame {
         try {
             fr_c = new FileReader(file_C);
             BufferedReader br = new BufferedReader(fr_c);
-            jTextArea1.setText(Compression.decompress(br));
+            jTextArea1.setText(Formatting.formatXML(Compression.decompress(br)));
             jLabel1.setText("XML file is decompressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
@@ -441,13 +441,13 @@ public class XML_View extends JFrame {
         // TODO add your handling code here:
         try {
             fr = new FileReader(file);
-            FileWriter fw=new FileWriter("..\\sample-input-error-corrected.xml");
+            FileWriter fw=new FileWriter("output\\sample-input-error-corrected.xml");
 	    BufferedWriter bw=new BufferedWriter(fw);
             BufferedReader br = new BufferedReader(fr);
             ErrorHandling.solveError(xml2string,bw);
             br.close();
             bw.close();
-            FileReader fr2 = new FileReader("..\\sample-input-error-corrected.xml");
+            FileReader fr2 = new FileReader("output\\sample-input-error-corrected.xml");
             BufferedReader br2 = new BufferedReader(fr2);
             StringBuilder sb2 = new StringBuilder();
             String line2 = br2.readLine();
@@ -507,7 +507,7 @@ public class XML_View extends JFrame {
         List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
         try {
             GraphVisualization.dotGen(users);
-            Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
+            Runtime.getRuntime().exec("dot -Tpng output\\graph.dot -o output\\graph.png");
             GraphImage image = new GraphImage();
 	    image.sendXML(xml2string);
 	    image.setVisible(true);
