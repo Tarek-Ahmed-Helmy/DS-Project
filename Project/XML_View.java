@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -57,7 +52,6 @@ public class XML_View extends JFrame {
         initComponents();
     }
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         openFilebtn = new javax.swing.JButton();
@@ -81,7 +75,7 @@ public class XML_View extends JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        openFilebtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        openFilebtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         openFilebtn.setText("Open File");
         openFilebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +83,7 @@ public class XML_View extends JFrame {
             }
         });
 
-        convertJSONbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        convertJSONbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         convertJSONbtn.setText("Convert to Json");
         convertJSONbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +91,7 @@ public class XML_View extends JFrame {
             }
         });
 
-        consistencybtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        consistencybtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         consistencybtn.setText("Check Consistency");
         consistencybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,7 +99,7 @@ public class XML_View extends JFrame {
             }
         });
 
-        showErrorbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        showErrorbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         showErrorbtn.setText("Show Errors");
         showErrorbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +107,7 @@ public class XML_View extends JFrame {
             }
         });
 
-        solveErrorbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        solveErrorbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         solveErrorbtn.setText("Correct Errors");
         solveErrorbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,11 +119,15 @@ public class XML_View extends JFrame {
         searchGraphbtn.setText("Search Graph");
         searchGraphbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchGraphbtnActionPerformed(evt);
+                try {
+                    searchGraphbtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        formatbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        formatbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         formatbtn.setText("Format");
         formatbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,7 +135,7 @@ public class XML_View extends JFrame {
             }
         });
 
-        minifybtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        minifybtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         minifybtn.setText("Minify");
         minifybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,45 +164,61 @@ public class XML_View extends JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Output  is Here !!!!!!!!");
         jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 0));
         jLabel1.setOpaque(true);
 
-        mostInflbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mostInflbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         mostInflbtn.setText("Most Influencer");
         mostInflbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostInflbtnActionPerformed(evt);
+                try {
+                    mostInflbtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        mutualFlwrbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mutualFlwrbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         mutualFlwrbtn.setText("Mutual Followers");
         mutualFlwrbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mutualFlwrbtnActionPerformed(evt);
+                try {
+                    mutualFlwrbtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        mostActivebtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        mostActivebtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         mostActivebtn.setText("Most Active");
         mostActivebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostActivebtnActionPerformed(evt);
+                try {
+                    mostActivebtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        suggestFlwrbtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        suggestFlwrbtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         suggestFlwrbtn.setText("Suggestion Followers");
         suggestFlwrbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                suggestFlwrbtnActionPerformed(evt);
+                try {
+                    suggestFlwrbtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
-        visualizebtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        visualizebtn.setFont(new java.awt.Font("Segoe UI", 1, 12));
         visualizebtn.setText("Visualize Graph");
         visualizebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,31 +298,41 @@ public class XML_View extends JFrame {
                         .addGap(0, 23, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void searchGraphbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGraphbtnActionPerformed
-        // TODO add your handling code here:
-        SearchWindow window = new SearchWindow();
-	window.sendXML(xml2string);
-	window.setVisible(true);
-    }//GEN-LAST:event_searchGraphbtnActionPerformed
+    private void searchGraphbtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before Search Graph");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }else {
+            SearchWindow window = new SearchWindow();
+            window.sendXML(xml2string);
+            window.setVisible(true);
+        }
+    }
 
-    private void minifybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minifybtnActionPerformed
-        // TODO add your handling code here:
-        String xml = jTextArea1.getText();
-        jTextArea1.setText(Formatting.minify(xml));
+    private void minifybtnActionPerformed(java.awt.event.ActionEvent evt) {
+        jTextArea1.setText(Formatting.minify(xml2string));
         jLabel1.setText("XML Minified");
-    }//GEN-LAST:event_minifybtnActionPerformed
+    }
 
-    private void openFilebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openFilebtnActionPerformed
-        // TODO add your handling code here:
+    private void openFilebtnActionPerformed(java.awt.event.ActionEvent evt) {
         JFileChooser chooser = new JFileChooser();
-	chooser.showOpenDialog(chooser);
-	chooser.setVisible(true);
-	file = new File(chooser.getSelectedFile().toString());
-	try {
+        chooser.showOpenDialog(chooser);
+        chooser.setVisible(true);
+        file = new File(chooser.getSelectedFile().toString());
+        try {
             fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             StringBuilder sb = new StringBuilder();
@@ -320,38 +344,35 @@ public class XML_View extends JFrame {
             xml2string = sb.toString();
             jTextArea1.setText(xml2string);
             br.close();
-            } catch (IOException e1) {
-		e1.printStackTrace();
-            }
-    }//GEN-LAST:event_openFilebtnActionPerformed
+        } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+    }
 
-    private void convertJSONbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convertJSONbtnActionPerformed
-        // TODO add your handling code here:
+    private void convertJSONbtnActionPerformed(java.awt.event.ActionEvent evt) {
         jTextArea1.setText(null);
-	Tree xmltree = new Tree();
-	xmltree.fillTree(xml2string);
-	ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	PrintStream ps = new PrintStream(baos);
-	PrintStream old = System.out;
-	System.setOut(ps);
-	JsonConversion.printJSON(xmltree.getRoot());
-	System.out.flush();
-	System.setOut(old);
-	String json = baos.toString();
-	jTextArea1.insert(json,0);
+        Tree xmltree = new Tree();
+        xmltree.fillTree(xml2string);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        PrintStream old = System.out;
+        System.setOut(ps);
+        JsonConversion.printJSON(xmltree.getRoot());
+        System.out.flush();
+        System.setOut(old);
+        String json = baos.toString();
+        jTextArea1.insert(json,0);
         jLabel1.setText("XML converted to JSON");
-    }//GEN-LAST:event_convertJSONbtnActionPerformed
+    }
 
-    private void formatbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatbtnActionPerformed
+    private void formatbtnActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String xml = jTextArea1.getText();
-        jTextArea1.setText(Formatting.formatXML(xml));
+        jTextArea1.setText(Formatting.formatXML(xml2string));
         jLabel1.setText("XML formatted");
         
-    }//GEN-LAST:event_formatbtnActionPerformed
+    }
 
-    private void consistencybtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consistencybtnActionPerformed
-        // TODO add your handling code here:
+    private void consistencybtnActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -363,37 +384,34 @@ public class XML_View extends JFrame {
                 System.out.println("The XML File Is Consistent");
             }else {
                 System.out.println("The XML File Is Not Consistent");}
-            System.out.flush();
-            System.setOut(old);
-            String consistency = baos.toString();
-            jLabel1.setText(consistency);
-            br.close();
+                System.out.flush();
+                System.setOut(old);
+                String consistency = baos.toString();
+                jLabel1.setText(consistency);
+                br.close();
         } catch (IOException ex) {
            ex.printStackTrace();
         }
-        
-    }//GEN-LAST:event_consistencybtnActionPerformed
+    }
 
-    private void compressbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compressbtnActionPerformed
-        // TODO add your handling code here:
+    private void compressbtnActionPerformed(java.awt.event.ActionEvent evt) {
         FileWriter fw3;
         Reader fr;
         try {
             fr = new FileReader(file);
             FileReader my_file = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-            fw3 = new FileWriter("..\\compressed.xml");
-            file_C = new File("..\\compressed.xml");
+            fw3 = new FileWriter("compressed.xml");
+            file_C = new File("compressed.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
             jTextArea1.setText(Formatting.formatXML(Compression.compress(xml2string,bw3)));
             jLabel1.setText("XML file is compressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_compressbtnActionPerformed
+    }
 
-    private void decompressbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decompressbtnActionPerformed
+    private void decompressbtnActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         Reader fr_c;
         try {
@@ -405,11 +423,9 @@ public class XML_View extends JFrame {
             jLabel1.setText("There is no compressed file to be decompressed");
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_decompressbtnActionPerformed
+    }
 
-    private void showErrorbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showErrorbtnActionPerformed
-        // TODO add your handling code here:
+    private void showErrorbtnActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -447,19 +463,18 @@ public class XML_View extends JFrame {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_showErrorbtnActionPerformed
+    }
 
-    private void solveErrorbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solveErrorbtnActionPerformed
-        // TODO add your handling code here:
+    private void solveErrorbtnActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             fr = new FileReader(file);
-            FileWriter fw=new FileWriter("..\\sample-input-corrected.xml");
+            FileWriter fw=new FileWriter("sample-input-corrected.xml");
 	    BufferedWriter bw=new BufferedWriter(fw);
             BufferedReader br = new BufferedReader(fr);
             ErrorHandling.solveError(xml2string,bw);
             br.close();
             bw.close();
-            FileReader fr2 = new FileReader("..\\sample-input-corrected.xml");
+            FileReader fr2 = new FileReader("sample-input-corrected.xml");
             BufferedReader br2 = new BufferedReader(fr2);
             StringBuilder sb2 = new StringBuilder();
             String line2 = br2.readLine();
@@ -475,46 +490,100 @@ public class XML_View extends JFrame {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
-    }//GEN-LAST:event_solveErrorbtnActionPerformed
+    }
 
-    private void mostInflbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostInflbtnActionPerformed
+    private void mostInflbtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
         // TODO add your handling code here:
-        Tree xmlTree = new Tree();
-        xmlTree.fillTree(xml2string);
-        List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
-        Graph constructedGraph = GraphConstruction.construct(users);
-	GraphNode mostInfluencer = NetworkAnalysis.mostInfluencer(constructedGraph, users);
-	jLabel1.setText("Most Influencer is " + mostInfluencer.name + ": " + mostInfluencer.id);
-    }//GEN-LAST:event_mostInflbtnActionPerformed
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before Network Analysis");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }else {
+            Tree xmlTree = new Tree();
+            xmlTree.fillTree(xml2string);
+            List<GraphNode> users = GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+            Graph constructedGraph = GraphConstruction.construct(users);
+            GraphNode mostInfluencer = NetworkAnalysis.mostInfluencer(constructedGraph, users);
+            jLabel1.setText("Most Influencer is " + mostInfluencer.name + ": " + mostInfluencer.id);
+        }
+    }
 
-    private void mutualFlwrbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mutualFlwrbtnActionPerformed
-        // TODO add your handling code here:
-        MutualFollowers mf = new MutualFollowers();
-	mf.sendXML(xml2string);
-	mf.setVisible(true);
-    }//GEN-LAST:event_mutualFlwrbtnActionPerformed
+    private void mutualFlwrbtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before Network Analysis");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }else {
+            MutualFollowers mf = new MutualFollowers();
+            mf.sendXML(xml2string);
+            mf.setVisible(true);
+        }
+    }
 
-    private void mostActivebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostActivebtnActionPerformed
-        // TODO add your handling code here:
-        Tree xmlTree = new Tree();
-        xmlTree.fillTree(xml2string);
-        List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
-        Graph constructedGraph = GraphConstruction.construct(users);
-	GraphNode mostActive = NetworkAnalysis.mostActive(constructedGraph, users);
-        jLabel1.setText("Most Active is " + mostActive.name + ": " + mostActive.id);
-    }//GEN-LAST:event_mostActivebtnActionPerformed
+    private void mostActivebtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_mostActivebtnActionPerformed
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before Network Analysis");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }else {
+            Tree xmlTree = new Tree();
+            xmlTree.fillTree(xml2string);
+            List<GraphNode> users = GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+            Graph constructedGraph = GraphConstruction.construct(users);
+            GraphNode mostActive = NetworkAnalysis.mostActive(constructedGraph, users);
+            jLabel1.setText("Most Active is " + mostActive.name + ": " + mostActive.id);
+        }
+    }
 
-    private void suggestFlwrbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suggestFlwrbtnActionPerformed
-        // TODO add your handling code here:
-        SuggestionFollowers sf = new SuggestionFollowers();
-	sf.sendXML(xml2string);
-	sf.setVisible(true);
-    }//GEN-LAST:event_suggestFlwrbtnActionPerformed
+    private void suggestFlwrbtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_suggestFlwrbtnActionPerformed
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before Network Analysis");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }else {
+            SuggestionFollowers sf = new SuggestionFollowers();
+	        sf.sendXML(xml2string);
+	        sf.setVisible(true);
+        }
+    }
 
     private void visualizebtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_visualizebtnActionPerformed
-        // TODO add your handling code here:
-
         if(!ErrorHandling.consistency(xml2string)){
             JFrame Note = new JFrame();
             JPanel pane2 = new JPanel();
@@ -534,7 +603,7 @@ public class XML_View extends JFrame {
             List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
             try {
                 GraphVisualization.dotGen(users);
-                Runtime.getRuntime().exec("dot -Tpng ..\\graph.dot -o ..\\graph.png");
+                Runtime.getRuntime().exec("dot -Tpng graph.dot -o graph.png");
                 GraphImage image = new GraphImage();
                 image.sendXML(xml2string);
                 image.setVisible(true);
@@ -542,9 +611,7 @@ public class XML_View extends JFrame {
                 e1.printStackTrace();
             }
         }
-
-        
-    }//GEN-LAST:event_visualizebtnActionPerformed
+    }
 
     public static void main(String args[]) {
         try {
@@ -566,7 +633,7 @@ public class XML_View extends JFrame {
         java.awt.EventQueue.invokeLater(() -> new XML_View().setVisible(true));
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton compressbtn;
     private javax.swing.JButton consistencybtn;
     private javax.swing.JButton convertJSONbtn;
@@ -585,5 +652,4 @@ public class XML_View extends JFrame {
     private javax.swing.JButton solveErrorbtn;
     private javax.swing.JButton suggestFlwrbtn;
     private javax.swing.JButton visualizebtn;
-    // End of variables declaration//GEN-END:variables
 }

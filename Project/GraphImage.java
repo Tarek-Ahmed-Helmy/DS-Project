@@ -57,13 +57,11 @@ public class GraphImage extends JFrame {
 				
 				try {
 					
-					BufferedImage img = ImageIO.read(new File("..\\graph.png"));
+					BufferedImage img = ImageIO.read(new File("graph.png"));
 					ImageIcon icon= new ImageIcon(img);
 					label.setIcon(icon);
-					//add(label);
 
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
