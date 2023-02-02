@@ -208,7 +208,11 @@ public class XML_View extends JFrame {
         visualizebtn.setText("Visualize Graph");
         visualizebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visualizebtnActionPerformed(evt);
+                try {
+                    visualizebtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -397,7 +401,8 @@ public class XML_View extends JFrame {
             BufferedReader br = new BufferedReader(fr_c);
             jTextArea1.setText(Formatting.formatXML(Compression.decompress(br)));
             jLabel1.setText("XML file is decompressed");
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            jLabel1.setText("There is no compressed file to be decompressed");
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -420,12 +425,19 @@ public class XML_View extends JFrame {
             JFrame showError = new JFrame();
             JPanel panel = new JPanel();
             showError.setBounds(200, 150, 300, 300);
-            String[] errors_lines = error.split("\n");
-            for(int i = 0 ; i< errors_lines.length ; i++){
-                JLabel errors_name = new JLabel();
-                errors_name.setBounds(30, 30, 180, 160);
-                errors_name.setText(errors_lines[i]);
-                panel.add(errors_name);
+            if(!ErrorHandling.consistency(xml2string)) {
+                String[] errors_lines = error.split("\n");
+                for (int i = 0; i < errors_lines.length; i++) {
+                    JLabel errors_name = new JLabel();
+                    errors_name.setBounds(30, 30, 180, 160);
+                    errors_name.setText(errors_lines[i]);
+                    panel.add(errors_name);
+                }
+            }else {
+                JLabel label2 = new JLabel();
+                label2.setText("There are no Errors");
+                label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+                panel.add(label2);
             }
             panel.setBorder(BorderFactory.createEmptyBorder(30,30,30,30));
             panel.setLayout(new GridLayout(0,1));
@@ -500,20 +512,37 @@ public class XML_View extends JFrame {
 	sf.setVisible(true);
     }//GEN-LAST:event_suggestFlwrbtnActionPerformed
 
-    private void visualizebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizebtnActionPerformed
+    private void visualizebtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_visualizebtnActionPerformed
         // TODO add your handling code here:
-        Tree xmlTree = new Tree();
-        xmlTree.fillTree(xml2string);
-        List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
-        try {
-            GraphVisualization.dotGen(users);
-            Runtime.getRuntime().exec("dot -Tpng output\\graph.dot -o output\\graph.png");
-            GraphImage image = new GraphImage();
-	    image.sendXML(xml2string);
-	    image.setVisible(true);
+
+        if(!ErrorHandling.consistency(xml2string)){
+            JFrame Note = new JFrame();
+            JPanel pane2 = new JPanel();
+            Note.setBounds(200, 150, 500, 150);
+            pane2.setBorder(BorderFactory.createEmptyBorder(30,50,30,50));
+            pane2.setLayout(new GridLayout(0,1));
+            JLabel label2 = new JLabel();
+            label2.setText("Please solve the errors before Graph visualization");
+            label2.setFont(new java.awt.Font("Segoe UI", 2, 16));
+            pane2.add(label2);
+            Note.add(pane2, BorderLayout.CENTER);
+            Note.setTitle("Note");
+            Note.setVisible(true);
+        }else {
+            Tree xmlTree = new Tree();
+            xmlTree.fillTree(xml2string);
+            List<GraphNode> users=GraphConstruction.treeToUsersArray(xmlTree.getRoot());
+            try {
+                GraphVisualization.dotGen(users);
+                Runtime.getRuntime().exec("dot -Tpng output\\graph.dot -o output\\graph.png");
+                GraphImage image = new GraphImage();
+                image.sendXML(xml2string);
+                image.setVisible(true);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+        }
+
         
     }//GEN-LAST:event_visualizebtnActionPerformed
 

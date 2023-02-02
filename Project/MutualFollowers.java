@@ -77,7 +77,7 @@ public class MutualFollowers extends JFrame {
 					System.out.println("Users have no mutual followers");
 				}
 				for (GraphNode user:mutualFollowers){
-					System.out.println(user.name + ": " + user.id);
+					System.out.println(user.name + ", id: " + user.id);
 				}
 			}
 			System.out.flush();

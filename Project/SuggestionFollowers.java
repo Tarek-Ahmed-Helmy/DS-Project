@@ -67,7 +67,7 @@ public class SuggestionFollowers extends JFrame {
 					System.out.println("No Suggestion Followers for this user!");
 				}
 				for (GraphNode user:suggestionFollowers){
-					System.out.println(user.name + ": " + user.id);
+					System.out.println(user.name + ", id: " + user.id);
 				}
 			}
 			System.out.flush();
