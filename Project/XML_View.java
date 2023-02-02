@@ -513,7 +513,7 @@ public class XML_View extends JFrame {
             List<GraphNode> users = GraphConstruction.treeToUsersArray(xmlTree.getRoot());
             Graph constructedGraph = GraphConstruction.construct(users);
             GraphNode mostInfluencer = NetworkAnalysis.mostInfluencer(constructedGraph, users);
-            jLabel1.setText("Most Influencer is " + mostInfluencer.name + ": " + mostInfluencer.id);
+            jLabel1.setText("Most Influencer is " + mostInfluencer.name + ", id: " + mostInfluencer.id);
         }
     }
 
@@ -558,7 +558,7 @@ public class XML_View extends JFrame {
             List<GraphNode> users = GraphConstruction.treeToUsersArray(xmlTree.getRoot());
             Graph constructedGraph = GraphConstruction.construct(users);
             GraphNode mostActive = NetworkAnalysis.mostActive(constructedGraph, users);
-            jLabel1.setText("Most Active is " + mostActive.name + ": " + mostActive.id);
+            jLabel1.setText("Most Active is " + mostActive.name + ", id: " + mostActive.id);
         }
     }
 

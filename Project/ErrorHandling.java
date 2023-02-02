@@ -34,7 +34,7 @@ public class ErrorHandling {
                     stack.pop();
                 }
                 else{
-                    String line2=line.replaceAll(closing_tag.toString(), "</"+matcher_opening_tag.group(1)+">");
+                    String line2=line.replaceAll(opening_tag.toString(), "<"+matcher_closing_tag.group(1)+">");
                     bw.append(line2).append(String.valueOf('\n'));
                     checkIfNoErrors=false;
                     stack.pop();
@@ -111,7 +111,7 @@ public class ErrorHandling {
                 }
                 else{
                     System.out.println("error in line: " +stack.peek().lineNumber);
-                    System.out.println("Wrong closing tag </"+matcher_closing_tag.group(1)+">" );
+                    System.out.println("Wrong opening tag <"+matcher_opening_tag.group(1)+">" );
                     stack.pop();
                 }
             }

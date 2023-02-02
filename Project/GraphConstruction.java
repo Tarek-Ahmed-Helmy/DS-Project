@@ -52,12 +52,14 @@ public class GraphConstruction{
         for(GraphNode user:graphNodeList){
             for (String topic:user.topics){
                 if(topic.contains(word)) {
+                    System.out.println("User: "+user.name);
                     System.out.println(topic);
                     found=true;
                 }
             }
             for (String post:user.posts){
                 if (post.contains(word)) {
+                    System.out.println("User: "+user.name);
                     System.out.println(post);
                     found=true;
                 }

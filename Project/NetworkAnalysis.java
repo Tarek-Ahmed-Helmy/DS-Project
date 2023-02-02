@@ -15,11 +15,11 @@ public class NetworkAnalysis {
         return graphNodeList.get(index-1);
     }
 
-    public static GraphNode mostActive(Graph graph,List<GraphNode> graphNodeList){  // the most active user is the one having the max sum of in-degree and out degree
+    public static GraphNode mostActive(Graph graph,List<GraphNode> graphNodeList){  // the most active user is the one having the max out degree
         int max=0,index=1;
         for(int i=1;i<=graph.v;i++){
-            if (graph.inDegree[i]+graph.outDegree[i] > max){
-                max = graph.inDegree[i]+graph.outDegree[i];
+            if (graph.outDegree[i] >= max){
+                max =graph.outDegree[i];
                 index = i;
             }
         }
