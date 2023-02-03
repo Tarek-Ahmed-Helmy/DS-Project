@@ -35,10 +35,12 @@ public class XML_View extends JFrame {
      * Creates new form XML_View
      */
         String xml2string;
+        String json;
 	File file;
         File file_C;
 	Reader fr;
 	String correctedxml="";
+    public int currentFileNo=1;
         String search_word;
         JTextArea textArea = new JTextArea();
 	public JTextArea getTextArea() {
@@ -379,9 +381,13 @@ public class XML_View extends JFrame {
             JsonConversion.printJSON(xmltree.getRoot());
             System.out.flush();
             System.setOut(old);
-            String json = baos.toString();
+            json = baos.toString();
             jTextArea1.insert(json, 0);
             jLabel1.setText("XML converted to JSON");
+            FileWriter fw=new FileWriter("json.JSON");
+            BufferedWriter bw=new BufferedWriter(fw);
+            bw.write(json);
+            bw.close();
         }
     }
 
@@ -417,15 +423,35 @@ public class XML_View extends JFrame {
     private void compressbtnActionPerformed(java.awt.event.ActionEvent evt) {
         FileWriter fw3;
         Reader fr;
+        String file2stringcompressionArea="";
         try {
-            fr = new FileReader(file);
-            FileReader my_file = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            fw3 = new FileWriter("compressed.xml");
-            file_C = new File("compressed.xml");
+            // we need a file chooser
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(chooser);
+            chooser.setVisible(true);
+            File fileCompressionArea = new File(chooser.getSelectedFile().toString());
+            try {
+                fr = new FileReader(fileCompressionArea);
+                BufferedReader br = new BufferedReader(fr);
+                StringBuilder sb = new StringBuilder();
+                String line = br.readLine();
+                while(line !=null){
+                    sb.append(line).append("\n");
+                    line = br.readLine();
+                }
+                file2stringcompressionArea = sb.toString();
+                jTextArea1.setText(file2stringcompressionArea);
+                br.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
+            fw3 = new FileWriter("compressed"+currentFileNo+".xml");
+            currentFileNo++;
+            //file_C = new File("compressed.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
-            jTextArea1.setText(Formatting.formatXML(Compression.compress(xml2string,bw3)));
-            jLabel1.setText("XML file is compressed");
+            jTextArea1.setText(Formatting.formatXML(Compression.compress(file2stringcompressionArea,bw3)));
+            jLabel1.setText("The file is compressed");
         } catch (IOException ex) {
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -435,10 +461,15 @@ public class XML_View extends JFrame {
         // TODO add your handling code here:
         Reader fr_c;
         try {
-            fr_c = new FileReader(file_C);
+            // we need a file chooser
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(chooser);
+            chooser.setVisible(true);
+            File fileCompressionArea = new File(chooser.getSelectedFile().toString());
+            fr_c = new FileReader(fileCompressionArea);
             BufferedReader br = new BufferedReader(fr_c);
             jTextArea1.setText(Formatting.formatXML(Compression.decompress(br)));
-            jLabel1.setText("XML file is decompressed");
+            jLabel1.setText("XML/JSON file is decompressed");
         } catch (Exception ex) {
             jLabel1.setText("There is no compressed file to be decompressed");
             Logger.getLogger(XML_View.class.getName()).log(Level.SEVERE, null, ex);
