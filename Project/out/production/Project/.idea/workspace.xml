@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Project:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cc9616ab-ea77-4d98-ac79-b59198d9dcfa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Project_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Project_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GraphVisualization.java" beforeDir="false" afterPath="$PROJECT_DIR$/GraphVisualization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/XML_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/XML_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/Project_jar/Project.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/.idea/artifacts/Project_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project/.idea/artifacts/Project_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/output/compress.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/output/graph.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/output/graph.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project/output/sample-input-error-corrected.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LA3dNmRiBklWfl204QmxfEW9Y5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="XML_View" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="XML_View" />
+      <module name="Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.XML_View" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cc9616ab-ea77-4d98-ac79-b59198d9dcfa" name="Changes" comment="" />
+      <created>1675300149415</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675300149415</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -7,7 +7,7 @@ We will work on developing a GUI based program to parse and visualize an XML fil
 It is a class that represents the xml tag node. It holds the tag value, data value and the list of tag children.
 ###	Class: Tree
 It is a class that converts the xml tags into a tree of tags, those tags are the nodes.
-####	Method: getRoot
+####	Method: getRoot()
 This method has a very simple job: it just returns the root node.
 ####	Method: fillTree (String file)
 This method constructs the tree of tags. It takes the xml file as a string.
@@ -22,26 +22,24 @@ It is a class representing the node used in the graph as it has the needed attri
 ###	Class: TagError
 It is a class representing tag errors which holds two details: the line where the error occurred and the tag value of the tag.
 ###	Class: ErrorHandling
-####	Method: consistency (BufferedReader br)
+####	Method: consistency (String str)
 This method is used to check if the xml file has errors or is error free. It has one parameter which is the buffered reader object of the xml file we are working on. It returns a Boolean value true means it is consistent and false means it is inconsistent.
-####	Method: showError (BufferedReader br)
+####	Method: showError (String str)
 It is a void static method that we use to show the errors in a given xml file. It takes a buffered reader object as a parameter.
-####	Method: solveError (BufferedReader br, BufferedWriter bw)
+####	Method: solveError (String str, BufferedWriter bw)
 It is a void static method that is used to solve the errors in a given xml file. It has two parameters: a buffered reader object to read the xml file and a buffered writer object to write in another xml file.
 ###	Class: JsonConversion
 ####	Method: printJSON (Node node)
 It is a method that is used to convert from the xml format to the JSON format. It takes the root node as input and prints out the JSON formatted file.
 ###	Class: Formatting
-####	Method: generateTabs (int tabLevel)
-It is a method to generate tabs by taking the tab level as a parameter and returns a string.
-####	Method: formatXML (String code)
-It is a method that uses the GenerateTabs function to inject some tabs according to the tag level. It takes the xml file as a string input and returns the formatted xml.
-####	Method: minify (String x)
+####	Method: formatXML (final String unformattedXML)
+The function iterates through the characters in the string and adding newline and indentation characters based on the structure of the XML. The algorithm keeps track of the indentation level by counting the number of opened XML tags and decreasing the indentation level when a closing tag is encountered.
+####	Method: minify (String xml)
 It is a method that minifies the xml file string by removing the additional white spaces and indentations. It takes the xml as string input and returns the minified string.
 ###	Class: Compression
-####	Method: compress (BufferedReader br, BufferedWriter bw)
+####	Method: compress (String str, BufferedWriter bw)
 This method uses LZW encoding in which the XML characters are added to an array list and then looping on every character if it’s present in the list, we replace the character with its index in the list and then we keep concatenating characters until the given string is not present in the list and adding it to the list.
-####	Method: decompress (String s)
+####	Method: decompress (BufferedReader br)
 This method uses LZW decoding in which the function takes the compressed code and loops over the code with array of chars of the compressed file and keep adding chars to the list and replace the number code in the compressed file to its original format.
 ###	Class: GraphConstruction
 ####	Method: treeToUsersArray (Node users)
@@ -59,21 +57,185 @@ This method takes two inputs: the graph constructed and the graph nodes list and
 It is a method with 4 parameters: the graph object, users list and the two graph nodes objects. It checks if there is a mutual follower between two users if so, it adds it to the mutual followers list and at the end it returns that list.
 ####	Method: suggestions (List<GraphNode> graphNodeList, GraphNode A)
 It is a method with 2 parameters: the users list and the user node that we want to suggest followers for. It goes to the followers of that user and adds the followers of those followers in a list that is called suggestionsList and returns it.
-###	Class: Main
-Here we call the methods we need to make the operations we talk about in the background above. It has one method: the main method.
-####	Method: main
-We first create the buffered readers, buffered writers and the string builder needed in our basic operations. We solve the errors of a file so that we can use it directly to create the graph needed. We create the tree from the xml file and then we use it to have our users list. We use the users list to construct the graph. We then do a while true with a switch case. Every case represents some function. We will discuss them now.
-* Case 1: checking the consistency.
-* Case 2: showing the errors.
-* Case 3: solving all errors.
-* Case 4: formatting (prettifying) the xml.
-* Case 5: printing the JSON format of the xml file.
-* Case 6: minifying the xml file.
-* Case 7: compressing the xml file.
-* Case 8: decompressing the compressed file of the xml file.
-* Case 9: knowing the most influencer.
-* Case 10: getting mutual followers between any two users.
-* Case 11: knowing the most active user.
-* Case 12: suggesting some followers for the given user.
-* Case 13: searching for a specific word in a topic or a post.
-* Default Case: printing for the client (“invalid entry”)
+###	GUI
+####	Main Window “XML_View”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####	Open File button
+-	Opens file chooser.
+-	Reads XML file.
+-	Converts XML file to String.
+-	Displays XML on text area.
+
+
+
+#####	Convert to JSON button
+-	Creates XML tree.
+-	Converts XML to JSON format.
+-	Displays “XML converted to JSON”
+-	Shows JSON format on text area.
+
+
+
+
+
+
+
+#####	Check Consistency button
+-	Checks if XML file has errors or not.
+-	If file contains errors:
+o	Displays “The XML File Is Not Consistent”.
+-	If file has no errors:
+o	Displays “The XML File Is Consistent”.
+
+
+
+
+
+
+#####	Show Errors button
+-	If XML file is not consistent: Shows errors and their locations in the file.
+-	If XML file is consistent: Displays “There are no errors”.
+
+
+
+
+
+#####	Solve Errors button
+-	Solves errors in XML file.
+-	Writes corrected XML in file “sample-input-corrected.xml”.
+-	Reads the corrected file and converts it to string.
+-	Displays “The errors are corrected”
+-	Shows the XML file after correction.
+
+
+#####	Format button 
+-	Formats XML file.
+-	Displays formatted XML on text area.
+-	Displays “XML is formatted”
+
+
+#####	Minify button
+-	Minifies XML file.
+-	Displays minified XML on text area.
+-	Displays “XML minified”.
+
+
+
+#####	Compress button
+-	Opens file chooser.
+-	Reads file to be compressed.
+-	Compresses XML.
+-	Writes Compression of XML in file “compressed.xml”.
+-	Displays “XML file is compressed”. 
+#####	Decompress button
+-	Opens file chooser.
+-	Reads file to be decompressed.
+-	Decompresses XML file.
+-	Displays decompressed file on text area.
+-	Displays “XML file is decompressed”.
+-	If compressed file does not exist:
+o	Catches exception.
+o	Displays “There is no compressed file to be decompressed”.
+
+#####	Search Graph button
+-	Creates a new window of class “SearchWindow”. 
+-	Sends XML file to the new window.
+
+
+#####	Most Influencer button
+-	Creates XML tree.
+-	Creates array of users.
+-	Displays the most influencer user’s name and ID. 
+
+#####	Mutual Followers button
+-	Creates a new window from class “MutualFollowers”.
+-	Sends XML file to the new window. 
+
+#####	Most Active button
+-	Creates XML tree.
+-	Creates a list of users.
+-	Constructs a graph of users.
+-	Displays the most active user. 
+
+#####	Suggestion Followers button
+-	Creates a new window from class “SuggestionFollowers”.
+-	Sends XML file to the new window.
+ 
+
+#####	Visualize Graph button
+-	Checks if XML file not consistent: 
+o	Display “Please solve the errors before Graph Visualization”.
+-	If XML file consistent:
+o	Creates XML tree.
+o	Creates list of users.
+o	Generates Graph.
+o	Opens New Window of class “GraphImage”. 
+
+####	 “SuggestionFollowers” window
+ 
+
+#####	Find button
+-	Takes user ID as input from user in “User Number” text field. 
+-	Creates XML tree. 
+-	Checks if ID does not exist.
+o	Displays “User does not exist”. 
+-	Displays suggestion followers for that user. 
+#####	Done button
+-	Closes the suggestion followers window.
+
+####	“MutualFollowers” window
+   
+#####	Find button
+-	Takes 2 user IDs as input from user in text fields. 
+-	Creates tree. 
+-	Creates List of users. 
+-	Constructs graph 
+-	Checks if first user does not exist 
+o	Displays “The first user does not exist” 
+-	 Checks if second user does not exist 
+o	Displays “The second user does not exist”
+-	If both users don’t exist: 
+o	Displays “Those users do not exist”.
+-	If users list is empty 
+o	Displays “file has no users”. 
+-	If mutual followers list is empty 
+o	Displays “These users have no mutual followers”. 
+-	Displays mutual followers.
+#####	Done button
+-	Closes the Mutual Followers window.
+
+####	“SearchWindow” window
+ 
+
+#####	Search button
+-	Takes word to be searched as input from user in text field 
+-	Displays the posts in which the word exists in text area 
+-	If a word does not exist, it displays “The word does not exist”.  
+#####	Done button
+-	Closes the Search window.
+
+
+
+
+
+
+####	“GraphImage” window
+ 
+
+#####	Show Graph button
+-	Displays the image of the graph. 
+#####	Done button
+-	Closes the GraphImage window.
