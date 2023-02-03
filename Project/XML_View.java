@@ -478,11 +478,7 @@ public class XML_View extends JFrame {
         // TODO add your handling code here:
         Reader fr_c;
         try {
-            // we need a file chooser
-            JFileChooser chooser = new JFileChooser();
-            chooser.showOpenDialog(chooser);
-            chooser.setVisible(true);
-            File fileCompressionArea = new File(chooser.getSelectedFile().toString());
+            File fileCompressionArea = new File("compressed"+(currentFileNo-1)+".txt");
             fr_c = new FileReader(fileCompressionArea);
             BufferedReader br = new BufferedReader(fr_c);
             String decompressed=Compression.decompress(br);
@@ -553,7 +549,7 @@ public class XML_View extends JFrame {
             }
             correctedxml = sb2.toString();
             xml2string = sb2.toString();
-            jTextArea1.setText(Formatting.formatXML(correctedxml));
+            jTextArea1.setText(correctedxml);
             jLabel1.setText("The errors are corrected");
             br2.close();
         } catch (IOException ex) {
