@@ -137,7 +137,11 @@ public class XML_View extends JFrame {
         formatbtn.setText("Format");
         formatbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                formatbtnActionPerformed(evt);
+                try {
+                    formatbtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -145,7 +149,11 @@ public class XML_View extends JFrame {
         minifybtn.setText("Minify");
         minifybtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minifybtnActionPerformed(evt);
+                try {
+                    minifybtnActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -328,9 +336,14 @@ public class XML_View extends JFrame {
         }
     }
 
-    private void minifybtnActionPerformed(java.awt.event.ActionEvent evt) {
-        jTextArea1.setText(Formatting.minify(xml2string));
+    private void minifybtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+        String minified=Formatting.minify(xml2string);
+        jTextArea1.setText(minified);
         jLabel1.setText("XML Minified");
+        FileWriter fw=new FileWriter("MinifiedXML.xml");
+        BufferedWriter bw=new BufferedWriter(fw);
+        bw.write(minified);
+        bw.close();
     }
 
     private void openFilebtnActionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,11 +404,15 @@ public class XML_View extends JFrame {
         }
     }
 
-    private void formatbtnActionPerformed(java.awt.event.ActionEvent evt) {
+    private void formatbtnActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
         // TODO add your handling code here:
-        jTextArea1.setText(Formatting.formatXML(xml2string));
+        String formatted=Formatting.formatXML(xml2string);
+        jTextArea1.setText(formatted);
         jLabel1.setText("XML formatted");
-        
+        FileWriter fw=new FileWriter("FormattedXML.xml");
+        BufferedWriter bw=new BufferedWriter(fw);
+        bw.write(formatted);
+        bw.close();
     }
 
     private void consistencybtnActionPerformed(java.awt.event.ActionEvent evt) {
@@ -446,7 +463,7 @@ public class XML_View extends JFrame {
                 e1.printStackTrace();
             }
 
-            fw3 = new FileWriter("compressed"+currentFileNo+".xml");
+            fw3 = new FileWriter("compressed"+currentFileNo+".txt");
             currentFileNo++;
             //file_C = new File("compressed.xml");
             BufferedWriter bw3=new BufferedWriter(fw3);
@@ -468,7 +485,8 @@ public class XML_View extends JFrame {
             File fileCompressionArea = new File(chooser.getSelectedFile().toString());
             fr_c = new FileReader(fileCompressionArea);
             BufferedReader br = new BufferedReader(fr_c);
-            jTextArea1.setText(Formatting.formatXML(Compression.decompress(br)));
+            String decompressed=Compression.decompress(br);
+            jTextArea1.setText(decompressed);
             jLabel1.setText("XML/JSON file is decompressed");
         } catch (Exception ex) {
             jLabel1.setText("There is no compressed file to be decompressed");
