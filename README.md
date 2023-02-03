@@ -139,13 +139,13 @@ o	Displays “The XML File Is Consistent”.
 -	Reads file to be compressed.
 -	Compresses XML.
 -	Writes Compression of XML in file “compressed.xml”.
--	Displays “XML file is compressed”. 
+-	Displays “The file is compressed”. 
 #####	Decompress button
 -	Opens file chooser.
 -	Reads file to be decompressed.
 -	Decompresses XML file.
 -	Displays decompressed file on text area.
--	Displays “XML file is decompressed”.
+-	Displays “XML/JSON file is decompressed”.
 -	If compressed file does not exist:
 o	Catches exception.
 o	Displays “There is no compressed file to be decompressed”.
